@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.themes">      
+      <theme
+            id="eu.kalafatic.gemini.bt.client.themess.default"
+            name="%theme.name.0">         
+      </theme>
+   </extension>
+   <extension
+         point="org.eclipse.ui.actionSets">
+      <actionSet
+            id="eu.kalafatic.gemini.bt.client.themes.actionSet1"
+            label="%actionSet.label.0"
+            visible="true">
+         <action
+               class="eu.kalafatic.gemini.bt.client.themes.ui.DefaultThemeAction"
+               icon="icons/welcome16.gif"
+               id="gemini.core.client.themes.action1"
+               label="%action.label.0"
+               menubarPath="Tools/new.ext">
+         </action>
+      </actionSet>
+   </extension>
+
+</plugin>

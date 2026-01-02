@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="btStructure"
+    nsURI="http:///btStructure.ecore" nsPrefix="btStructure">
+  <eClassifiers xsi:type="ecore:EClass" name="BTStructure">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newTorrents" upperBound="-1"
+        eType="ecore:EClass ../../eu.kalafatic.gemini.bt.client.model/model/Torrents.ecore#//StringToExtTorrentMapEntry"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="trackersMap" upperBound="-1"
+        eType="#//StringToTrackerMapEntry" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="treeObjects" upperBound="-1"
+        eType="#//StringToFileTreeObjectMapEntry" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Tracker">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="checked" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="announce" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="comment" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FileTreeObject">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parent" eType="#//FileTreeObject"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="file" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="path" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="md5Sum" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="length" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="childMap" upperBound="-1"
+        eType="#//StringToFileTreeObjectMapEntry" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StringToTrackerMapEntry" instanceClassName="java.util.Map$Entry">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//Tracker"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StringToFileTreeObjectMapEntry" instanceClassName="java.util.Map$Entry">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//FileTreeObject"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="EIntegerArray" instanceClassName="int[]"/>
+  <eSubpackages name="btStructureConstants" nsURI="http:///btStructureConstants.ecore"
+      nsPrefix="btStructureConstants">
+    <eClassifiers xsi:type="ecore:EEnum" name="ETorrentStructure">
+      <eLiterals name="ANNOUNCE" literal="announce"/>
+      <eLiterals name="ANNOUNCE_LIST" value="1" literal="announce list"/>
+      <eLiterals name="CREATED_BY" value="2" literal="created by"/>
+      <eLiterals name="CREATION_DATE" value="3" literal="creation date"/>
+      <eLiterals name="ENCODING" value="4" literal="encoding"/>
+      <eLiterals name="INFO" value="5" literal="info"/>
+      <eLiterals name="NAME" value="6" literal="name"/>
+      <eLiterals name="FILES" value="7" literal="files"/>
+      <eLiterals name="LENGTH" value="8" literal="length"/>
+      <eLiterals name="PATH" value="9" literal="path"/>
+      <eLiterals name="PIECES" value="10" literal="pieces"/>
+      <eLiterals name="PIECE_LENGTH" value="11" literal="piece length"/>
+      <eLiterals name="PRIVATE" value="12" literal="private"/>
+      <eLiterals name="MD5SUM" value="13" literal="md5sum"/>
+      <eLiterals name="COMMENT" value="14" literal="comment"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="EBlockSize">
+      <eLiterals name="P_FOUR" value="16384" literal="16 KB"/>
+      <eLiterals name="P_FIVE" value="32768" literal="32 Kb"/>
+      <eLiterals name="P_SIX" value="65536" literal="64  KB"/>
+      <eLiterals name="P_SEVEN" value="131072" literal="128  KB"/>
+      <eLiterals name="P_EIGHT" value="262144" literal="256  KB"/>
+      <eLiterals name="P_NINE" value="524288" literal="512  KB"/>
+      <eLiterals name="P_TEN" value="1048576" literal="1 MB"/>
+      <eLiterals name="P_ELEVEN" value="2097152" literal="2 MB"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="ETMMessages">
+      <eLiterals name="GENERATED" literal="Generated"/>
+    </eClassifiers>
+  </eSubpackages>
+</ecore:EPackage>

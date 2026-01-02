@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id$
+-->
+
+<plugin>
+
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package
+          class="eu.kalafatic.gemini.bt.tracker.model.tracker.TrackerPackage"
+          genModel="model/Tracker.genmodel"
+          uri="http:///tracker.ecore">
+    </package> 
+  </extension>
+
+</plugin>

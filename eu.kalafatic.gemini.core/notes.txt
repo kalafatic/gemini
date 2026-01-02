@@ -1,0 +1,7 @@
+
+
+
+
+ACCESS FOLDER (SOUNDS) AFTER EXPORT
+feature-based product specify in the feature.xml file the "Unpack...." for the plugin.
+When I export the product, the plugin is exploded in a folder and I can refer the files I need.

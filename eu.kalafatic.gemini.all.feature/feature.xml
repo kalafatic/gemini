@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="eu.kalafatic.gemini.all.feature"
+      label="Gemini"
+      version="3.0.0.qualifier"
+      provider-name="Petr Kalafatic">
+
+   <url>
+      <update label="Gemini - Update Site" url="http://kalafatic.eu:6885/Web/Projects/Gemini/Update"/>
+   </url>
+
+   <includes
+         id="eu.kalafatic.gemini.bt.client.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="eu.kalafatic.gemini.bt.client.net.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="eu.kalafatic.gemini.bt.tm.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="eu.kalafatic.gemini.bt.tracker.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="eu.kalafatic.gemini.core.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="eu.kalafatic.gemini.webBrowser.feature"
+         version="0.0.0"/>
+
+</feature>

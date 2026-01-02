@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="eu.kalafatic.gemini.bt.client.net.view.perspectives.NetworkBasePerspective"
+            icon="platform:/plugin/eu.kalafatic.gemini.core/icons/network/network.jpg"
+            id="eu.kalafatic.gemini.bt.client.net.view.perspectives.NetworkBasePerspective"
+            name="%perspective.name">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            id="Net"
+            name="%category.name"
+            parentCategory="Gemini/BT">
+      </category>
+      <view
+            category="Gemini/BT/Net"
+            class="eu.kalafatic.gemini.bt.client.net.view.views.SwarmTreeView"
+            icon="platform:/plugin/eu.kalafatic.gemini.core/icons/network/swarm.png"
+            id="eu.kalafatic.gemini.bt.client.net.view.views.SwarmTreeView"
+            name="%view.name.1"
+            restorable="true">
+      </view>
+      <view
+            category="Gemini/BT/Net"
+            class="eu.kalafatic.gemini.bt.client.net.view.views.SessionDetailView"
+            icon="platform:/plugin/eu.kalafatic.gemini.core/icons/session.png"
+            id="eu.kalafatic.gemini.bt.client.net.view.views.SessionDetailView"
+            name="%view.name.2"
+            restorable="true">
+      </view>
+      <view
+            category="Gemini/BT/Net"
+            class="eu.kalafatic.gemini.bt.client.net.view.views.BTGraphView"
+            icon="platform:/plugin/eu.kalafatic.gemini.core/icons/network/graph.gif"
+            id="eu.kalafatic.gemini.bt.client.net.view.views.BTGraphView"
+            name="%view.name.6"
+            restorable="true">
+      </view>
+      <view
+            category="Gemini/BT/Net"
+            class="eu.kalafatic.gemini.bt.client.net.view.views.BTSwarmActivityView"
+            icon="platform:/plugin/eu.kalafatic.gemini.core/icons/session.png"
+            id="eu.kalafatic.gemini.bt.client.net.view.views.BTSwarmActivityView"
+            name="%view.name.7"
+            restorable="true">
+      </view>
+   </extension>
+
+</plugin>

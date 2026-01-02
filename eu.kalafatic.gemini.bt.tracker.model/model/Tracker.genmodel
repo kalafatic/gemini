@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/eu.kalafatic.gemini.bt.tracker.model/src"
+    modelPluginID="eu.kalafatic.gemini.bt.tracker.model" modelName="Tracker" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="6.0" copyrightFields="false">
+  <foreignModel>Tracker.ecore</foreignModel>
+  <genPackages prefix="Tracker" basePackage="eu.kalafatic.gemini.bt.tracker.model"
+      disposableProviderFactory="true" ecorePackage="Tracker.ecore#/">
+    <genDataTypes ecoreDataType="Tracker.ecore#//Channel"/>
+    <genClasses ecoreClass="Tracker.ecore#//TrackerModel">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Tracker.ecore#//TrackerModel/swarmMap"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Tracker.ecore#//TrackerModel/trackerID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Tracker.ecore#//TrackerModel/defaultNumwant"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Tracker.ecore#//TrackerModel/defaultInterval"/>
+    </genClasses>
+    <genClasses ecoreClass="Tracker.ecore#//TorrentSession">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Tracker.ecore#//TorrentSession/torrentName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Tracker.ecore#//TorrentSession/complete"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Tracker.ecore#//TorrentSession/incomplete"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Tracker.ecore#//TorrentSession/torrentLen"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Tracker.ecore#//TorrentSession/downloaded"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Tracker.ecore#//TorrentSession/clientMap"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Tracker.ecore#//TorrentSession/torrentPath"/>
+    </genClasses>
+    <genClasses ecoreClass="Tracker.ecore#//ClientSession">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Tracker.ecore#//ClientSession/seed"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Tracker.ecore#//ClientSession/lastConnection"/>
+    </genClasses>
+    <genClasses ecoreClass="Tracker.ecore#//Session">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Tracker.ecore#//Session/address"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Tracker.ecore#//Session/channel"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Tracker.ecore#//Session/requestMap"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Tracker.ecore#//Session/communication"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Tracker.ecore#//Session/sessionState"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Tracker.ecore#//Session/peerId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Tracker.ecore#//Session/note"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Tracker.ecore#//Session/infoHash"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Tracker.ecore#//Session/listenPort"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Tracker.ecore#//Session/torrent"/>
+    </genClasses>
+    <genClasses ecoreClass="Tracker.ecore#//StringToSessionMapEntry">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Tracker.ecore#//StringToSessionMapEntry/key"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Tracker.ecore#//StringToSessionMapEntry/value"/>
+    </genClasses>
+    <genClasses ecoreClass="Tracker.ecore#//StringToStringMapEntry">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Tracker.ecore#//StringToStringMapEntry/key"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Tracker.ecore#//StringToStringMapEntry/value"/>
+    </genClasses>
+    <genClasses ecoreClass="Tracker.ecore#//Communication">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Tracker.ecore#//Communication/date"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Tracker.ecore#//Communication/request"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Tracker.ecore#//Communication/response"/>
+    </genClasses>
+    <nestedGenPackages prefix="TrackerConstants" basePackage="eu.kalafatic.gemini.bt.tracker.model.tracker"
+        disposableProviderFactory="true" ecorePackage="Tracker.ecore#//trackerConstants">
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="Tracker.ecore#//trackerConstants/EViewMessages">
+        <genEnumLiterals ecoreEnumLiteral="Tracker.ecore#//trackerConstants/EViewMessages/READY"/>
+        <genEnumLiterals ecoreEnumLiteral="Tracker.ecore#//trackerConstants/EViewMessages/PAUSED"/>
+        <genEnumLiterals ecoreEnumLiteral="Tracker.ecore#//trackerConstants/EViewMessages/STOPPED"/>
+        <genEnumLiterals ecoreEnumLiteral="Tracker.ecore#//trackerConstants/EViewMessages/FINISHED"/>
+        <genEnumLiterals ecoreEnumLiteral="Tracker.ecore#//trackerConstants/EViewMessages/WAITING"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="Tracker.ecore#//trackerConstants/ETrackerRequestProtocol">
+        <genEnumLiterals ecoreEnumLiteral="Tracker.ecore#//trackerConstants/ETrackerRequestProtocol/ANNOUNCE"/>
+        <genEnumLiterals ecoreEnumLiteral="Tracker.ecore#//trackerConstants/ETrackerRequestProtocol/INFO_HASH"/>
+        <genEnumLiterals ecoreEnumLiteral="Tracker.ecore#//trackerConstants/ETrackerRequestProtocol/PEER_ID"/>
+        <genEnumLiterals ecoreEnumLiteral="Tracker.ecore#//trackerConstants/ETrackerRequestProtocol/PORT"/>
+        <genEnumLiterals ecoreEnumLiteral="Tracker.ecore#//trackerConstants/ETrackerRequestProtocol/UPLOADED"/>
+        <genEnumLiterals ecoreEnumLiteral="Tracker.ecore#//trackerConstants/ETrackerRequestProtocol/DOWNLOADED"/>
+        <genEnumLiterals ecoreEnumLiteral="Tracker.ecore#//trackerConstants/ETrackerRequestProtocol/LEFT"/>
+        <genEnumLiterals ecoreEnumLiteral="Tracker.ecore#//trackerConstants/ETrackerRequestProtocol/COMPACT"/>
+        <genEnumLiterals ecoreEnumLiteral="Tracker.ecore#//trackerConstants/ETrackerRequestProtocol/NO_PEER_ID"/>
+        <genEnumLiterals ecoreEnumLiteral="Tracker.ecore#//trackerConstants/ETrackerRequestProtocol/IP"/>
+        <genEnumLiterals ecoreEnumLiteral="Tracker.ecore#//trackerConstants/ETrackerRequestProtocol/NUMWANT"/>
+        <genEnumLiterals ecoreEnumLiteral="Tracker.ecore#//trackerConstants/ETrackerRequestProtocol/KEY"/>
+        <genEnumLiterals ecoreEnumLiteral="Tracker.ecore#//trackerConstants/ETrackerRequestProtocol/TRACKER_ID"/>
+        <genEnumLiterals ecoreEnumLiteral="Tracker.ecore#//trackerConstants/ETrackerRequestProtocol/EVENT"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="Tracker.ecore#//trackerConstants/ETrackerResponseProtocol">
+        <genEnumLiterals ecoreEnumLiteral="Tracker.ecore#//trackerConstants/ETrackerResponseProtocol/FAILURE_REASON"/>
+        <genEnumLiterals ecoreEnumLiteral="Tracker.ecore#//trackerConstants/ETrackerResponseProtocol/WARNING_MESSAGE"/>
+        <genEnumLiterals ecoreEnumLiteral="Tracker.ecore#//trackerConstants/ETrackerResponseProtocol/INTERVAL"/>
+        <genEnumLiterals ecoreEnumLiteral="Tracker.ecore#//trackerConstants/ETrackerResponseProtocol/MIN_INTERVAL"/>
+        <genEnumLiterals ecoreEnumLiteral="Tracker.ecore#//trackerConstants/ETrackerResponseProtocol/TRACKER_ID"/>
+        <genEnumLiterals ecoreEnumLiteral="Tracker.ecore#//trackerConstants/ETrackerResponseProtocol/COMPLETE"/>
+        <genEnumLiterals ecoreEnumLiteral="Tracker.ecore#//trackerConstants/ETrackerResponseProtocol/INCOMPLETE"/>
+        <genEnumLiterals ecoreEnumLiteral="Tracker.ecore#//trackerConstants/ETrackerResponseProtocol/PEERS"/>
+        <genEnumLiterals ecoreEnumLiteral="Tracker.ecore#//trackerConstants/ETrackerResponseProtocol/PEER_ID"/>
+        <genEnumLiterals ecoreEnumLiteral="Tracker.ecore#//trackerConstants/ETrackerResponseProtocol/IP"/>
+        <genEnumLiterals ecoreEnumLiteral="Tracker.ecore#//trackerConstants/ETrackerResponseProtocol/PORT"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="Tracker.ecore#//trackerConstants/ETrackerResponseCode">
+        <genEnumLiterals ecoreEnumLiteral="Tracker.ecore#//trackerConstants/ETrackerResponseCode/INVALID_REQUEST"/>
+        <genEnumLiterals ecoreEnumLiteral="Tracker.ecore#//trackerConstants/ETrackerResponseCode/MISSING_HASH"/>
+        <genEnumLiterals ecoreEnumLiteral="Tracker.ecore#//trackerConstants/ETrackerResponseCode/MISSING_PEER_ID"/>
+        <genEnumLiterals ecoreEnumLiteral="Tracker.ecore#//trackerConstants/ETrackerResponseCode/MISSING_PORT"/>
+        <genEnumLiterals ecoreEnumLiteral="Tracker.ecore#//trackerConstants/ETrackerResponseCode/INVALID_HASH"/>
+        <genEnumLiterals ecoreEnumLiteral="Tracker.ecore#//trackerConstants/ETrackerResponseCode/INVALID_PEER_ID"/>
+        <genEnumLiterals ecoreEnumLiteral="Tracker.ecore#//trackerConstants/ETrackerResponseCode/INVALID_NUMWANT"/>
+        <genEnumLiterals ecoreEnumLiteral="Tracker.ecore#//trackerConstants/ETrackerResponseCode/HASH_NOT_FOUND"/>
+        <genEnumLiterals ecoreEnumLiteral="Tracker.ecore#//trackerConstants/ETrackerResponseCode/EVENTLESS_REQUEST"/>
+        <genEnumLiterals ecoreEnumLiteral="Tracker.ecore#//trackerConstants/ETrackerResponseCode/GENERIC_ERROR"/>
+      </genEnums>
+    </nestedGenPackages>
+  </genPackages>
+</genmodel:GenModel>

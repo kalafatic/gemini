@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <description name="Gemini update" url="http://kalafatic.eu:6885/Projects/Gemini/Update">
+      Features to update ...
+   </description>
+   <feature url="features/eu.kalafatic.gemini.bt.client.module_2.0.2.201109221350.jar" id="eu.kalafatic.gemini.bt.client.module" version="2.0.2.201109221350">
+      <category name="Client"/>
+   </feature>
+   <feature url="features/eu.kalafatic.gemini.bt.tm.module_2.0.2.201109221350.jar" id="eu.kalafatic.gemini.bt.tm.module" version="2.0.2.201109221350">
+      <category name="Torrent Maker"/>
+   </feature>
+   <feature url="features/eu.kalafatic.gemini.bt.tracker.module_2.0.2.201109221350.jar" id="eu.kalafatic.gemini.bt.tracker.module" version="2.0.2.201109221350">
+      <category name="Tracker"/>
+   </feature>
+   <feature url="features/eu.kalafatic.gemini.core.module_2.0.2.201109221350.jar" id="eu.kalafatic.gemini.core.module" version="2.0.2.201109221350">
+      <category name="Core"/>
+   </feature>
+   <feature url="features/eu.kalafatic.web.module_2.0.2.201109221350.jar" id="eu.kalafatic.web.module" version="2.0.2.201109221350">
+      <category name="Web"/>
+   </feature>
+   <feature url="features/eu.kalafatic.gemini.nl1.module_1.0.0.201109221350.jar" id="eu.kalafatic.gemini.nl1.module" version="1.0.0.201109221350">
+      <category name="NL1"/>
+   </feature>
+   <feature url="features/eu.kalafatic.gemini.bt.client.net.rc.module_1.0.0.201109221350.jar" id="eu.kalafatic.gemini.bt.client.net.rc.module" version="1.0.0.201109221350">
+      <category name="Remote Control"/>
+   </feature>
+   <feature url="features/eu.kalafatic.gemini.bt.client.module_2.0.3.201111041716.jar" id="eu.kalafatic.gemini.bt.client.module" version="2.0.3.201111041716">
+      <category name="Client"/>
+   </feature>
+   <feature url="features/eu.kalafatic.gemini.bt.tm.module_2.0.3.201111041716.jar" id="eu.kalafatic.gemini.bt.tm.module" version="2.0.3.201111041716">
+      <category name="Torrent Maker"/>
+   </feature>
+   <feature url="features/eu.kalafatic.gemini.bt.tracker.module_2.0.3.201111041716.jar" id="eu.kalafatic.gemini.bt.tracker.module" version="2.0.3.201111041716">
+      <category name="Tracker"/>
+   </feature>
+   <feature url="features/eu.kalafatic.gemini.core.module_2.0.3.201111041716.jar" id="eu.kalafatic.gemini.core.module" version="2.0.3.201111041716">
+      <category name="Core"/>
+   </feature>
+   <feature url="features/eu.kalafatic.web.module_2.0.3.201111041716.jar" id="eu.kalafatic.web.module" version="2.0.3.201111041716">
+      <category name="Web"/>
+   </feature>
+   <feature url="features/eu.kalafatic.gemini.nl1.module_2.0.3.201111041716.jar" id="eu.kalafatic.gemini.nl1.module" version="2.0.3.201111041716">
+      <category name="NL1"/>
+   </feature>
+   <feature url="features/eu.kalafatic.gemini.bt.client.net.rc.module_2.0.3.201111041716.jar" id="eu.kalafatic.gemini.bt.client.net.rc.module" version="2.0.3.201111041716">
+      <category name="Remote Control"/>
+   </feature>
+   <feature url="features/eu.kalafatic.gemini.media.module_2.0.3.201111052145.jar" id="eu.kalafatic.gemini.media.module" version="2.0.3.201111052145">
+      <category name="Media"/>
+   </feature>
+   <feature url="features/eu.kalafatic.gemini.bt.client.module_2.0.4.201112200938.jar" id="eu.kalafatic.gemini.bt.client.module" version="2.0.4.201112200938">
+      <category name="Client"/>
+   </feature>
+   <feature url="features/eu.kalafatic.gemini.bt.tm.module_2.0.4.201112200938.jar" id="eu.kalafatic.gemini.bt.tm.module" version="2.0.4.201112200938">
+      <category name="Torrent Maker"/>
+   </feature>
+   <feature url="features/eu.kalafatic.gemini.bt.tracker.module_2.0.4.201112200938.jar" id="eu.kalafatic.gemini.bt.tracker.module" version="2.0.4.201112200938">
+      <category name="Tracker"/>
+   </feature>
+   <feature url="features/eu.kalafatic.gemini.core.module_2.0.4.201112200938.jar" id="eu.kalafatic.gemini.core.module" version="2.0.4.201112200938">
+      <category name="Core"/>
+   </feature>
+   <category-def name="Client" label="Gemini-Client Module"/>
+   <category-def name="Torrent Maker" label="Gemini-Torrent Maker Module"/>
+   <category-def name="Tracker" label="Gemini-Tracker Module"/>
+   <category-def name="Core" label="Gemini-Core Module"/>
+   <category-def name="Web" label="Gemini-Web Module"/>
+   <category-def name="NL1" label="Gemini-NL1 Module"/>
+   <category-def name="Remote Control" label="Gemini-RC Module"/>
+   <category-def name="Media" label="Gemini-Media Module"/>
+</site>

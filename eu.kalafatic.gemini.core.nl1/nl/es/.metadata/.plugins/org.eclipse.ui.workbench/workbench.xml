@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workbench version="2.0">
+<workbenchAdvisor/>
+<window height="543" width="832" x="85" y="70">
+<fastViewData fastViewLocation="1024"/>
+<intro standby="true"/>
+<perspectiveBar>
+<itemSize x="348"/>
+</perspectiveBar>
+<coolbarLayout locked="0">
+<coolItem id="coolBar" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="com.omondo.uml.docgen.actionSet" itemType="typeToolBarContribution" x="37" y="22"/>
+<coolItem id="org.eclipse.wst.ws.explorer.explorer" itemType="typeToolBarContribution" x="37" y="22"/>
+<coolItem id="org.eclipse.ui.edit.text.actionSet.annotationNavigation" itemType="typeToolBarContribution" x="87" y="22"/>
+<coolItem id="com.omondo.uml.UMLElementCreationActionSet" itemType="typeToolBarContribution" x="98" y="22"/>
+<coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="37" y="22"/>
+<coolItem id="org.eclipse.ui.edit.text.actionSet.navigation" itemType="typeToolBarContribution" x="37" y="22"/>
+<coolItem id="org.eclipse.wst.server.ui.internal.webbrowser.actionSet" itemType="typeToolBarContribution" x="37" y="22"/>
+<coolItem id="org.eclipse.debug.ui.launchActionSet" itemType="typeToolBarContribution" x="50" y="22"/>
+<coolItem id="org.eclipse.jdt.ui.JavaElementCreationActionSet" itemType="typeToolBarContribution" x="98" y="22"/>
+<coolItem id="org.eclipse.ui.browser.editor" itemType="typePlaceholder" x="-1" y="-1"/>
+<coolItem id="eu.kalafatic.gemini.core.actionSet3" itemType="typeToolBarContribution" x="39" y="22"/>
+</coolbarLayout>
+<page focus="true" label="&lt;Unknown Label&gt; - &lt;Torrent Maker&gt;">
+<editors>
+<editorArea activeWorkbook="DefaultEditorWorkbook">
+<info part="DefaultEditorWorkbook">
+<folder appearance="1" expanded="2">
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
+</folder>
+</info>
+</editorArea>
+</editors>
+<views>
+<view id="org.eclipse.ui.internal.introview" partName="Welcome">
+<viewState>
+<presentation currentPage="root" restore="true"/>
+<standbyPart/>
+</viewState>
+</view>
+</views>
+<perspectives activePart="org.eclipse.ui.internal.introview" activePerspective="&lt;Torrent_Maker&gt;">
+<perspective editorAreaTrimState="2" editorAreaVisible="0" fixed="0" version="0.016">
+<descriptor descriptor="gemini.core.client.ClientPerspective" id="&lt;Client&gt;" label="&lt;Client&gt;"/>
+<alwaysOnActionSet id="org.eclipse.ui.actionSet.openFiles"/>
+<alwaysOnActionSet id="eu.kalafatic.gemini.bt.client.controller.actionSet1"/>
+<alwaysOnActionSet id="eu.kalafatic.gemini.bt.torrentMaker.controllerr.actionSet1"/>
+<alwaysOnActionSet id="eu.kalafatic.gemini.core.actionSet1"/>
+<alwaysOnActionSet id="eu.kalafatic.gemini.core.actionSet2"/>
+<alwaysOnActionSet id="eu.kalafatic.gemini.core.actionSet3"/>
+<fastViewBars/>
+<layout>&#x0A;<mainWindow>&#x0A;<info folder="true" part="topLeft">&#x0A;<folder activePageID="gemini.core.client.TorrentsTreeView" appearance="2" expanded="2">&#x0A;<page content="gemini.core.client.TorrentsTreeView" label="LabelNotFound"/>
+</folder>
+</info>
+<info folder="true" part="stickyFolderRight" ratio="0.75" ratioLeft="612" ratioRight="204" relationship="2" relative="topLeft">&#x0A;<folder appearance="2" expanded="2">&#x0A;<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
+<page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
+</folder>
+</info>
+<info part="org.eclipse.ui.editorss" ratio="0.19975491" ratioLeft="163" ratioRight="653" relationship="2" relative="topLeft"/>
+<info folder="true" part="topRight" ratio="0.34915772" ratioLeft="228" ratioRight="425" relationship="2" relative="org.eclipse.ui.editorss">&#x0A;<folder activePageID="gemini.core.client.TorrentsTableView" appearance="2" expanded="2">&#x0A;<page content="gemini.core.client.TorrentsTableView" label="LabelNotFound"/>
+</folder>
+</info>
+<info folder="true" part="bottomRight" ratio="0.6484018" ratioLeft="284" ratioRight="154" relationship="4" relative="topRight">&#x0A;<folder activePageID="gemini.core.client.TorrentDetailView" appearance="2" expanded="2">&#x0A;<page content="gemini.core.client.TorrentDetailView" label="LabelNotFound"/>
+<page content="gemini.core.client.ClientDetailView" label="LabelNotFound"/>
+</folder>
+</info>
+</mainWindow>
+</layout>
+</perspective>
+<perspective editorAreaTrimState="2" editorAreaVisible="0" fixed="0" version="0.016">
+<descriptor descriptor="gemini.core.tracker.Perspective" id="&lt;Tracker&gt;" label="&lt;Tracker&gt;"/>
+<alwaysOnActionSet id="org.eclipse.ui.actionSet.openFiles"/>
+<alwaysOnActionSet id="eu.kalafatic.gemini.bt.client.controller.actionSet1"/>
+<alwaysOnActionSet id="eu.kalafatic.gemini.bt.torrentMaker.controllerr.actionSet1"/>
+<alwaysOnActionSet id="eu.kalafatic.gemini.core.actionSet1"/>
+<alwaysOnActionSet id="eu.kalafatic.gemini.core.actionSet2"/>
+<alwaysOnActionSet id="eu.kalafatic.gemini.core.actionSet3"/>
+<fastViewBars/>
+<layout>&#x0A;<mainWindow>&#x0A;<info folder="true" part="topLeft">&#x0A;<folder activePageID="gemini.core.tracker.TrackerView" appearance="2" expanded="2">&#x0A;<page content="gemini.core.tracker.TrackerView" label="LabelNotFound"/>
+</folder>
+</info>
+<info folder="true" part="stickyFolderRight" ratio="0.75" ratioLeft="612" ratioRight="204" relationship="2" relative="topLeft">&#x0A;<folder appearance="2" expanded="2">&#x0A;<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
+<page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
+</folder>
+</info>
+<info part="org.eclipse.ui.editorss" ratio="0.5" ratioLeft="408" ratioRight="408" relationship="2" relative="topLeft"/>
+<info folder="true" part="topRight" ratio="0.5" ratioLeft="204" ratioRight="204" relationship="2" relative="org.eclipse.ui.editorss">&#x0A;<folder activePageID="gemini.core.tracker.ClientView" appearance="2" expanded="2">&#x0A;<page content="gemini.core.tracker.ClientView" label="LabelNotFound"/>
+</folder>
+</info>
+<info folder="true" part="bottomRight" ratio="0.5" ratioLeft="219" ratioRight="219" relationship="4" relative="topRight">&#x0A;<folder activePageID="gemini.core.tracker.Graph" appearance="2" expanded="2">&#x0A;<page content="gemini.core.tracker.Graph" label="LabelNotFound"/>
+</folder>
+</info>
+<info folder="true" part="bottomLeft" ratio="0.5" ratioLeft="219" ratioRight="219" relationship="4" relative="topLeft">&#x0A;<folder activePageID="gemini.core.tracker.ClientsTree" appearance="2" expanded="2">&#x0A;<page content="gemini.core.tracker.ClientsTree" label="LabelNotFound"/>
+</folder>
+</info>
+</mainWindow>
+</layout>
+</perspective>
+<perspective editorAreaTrimState="2" editorAreaVisible="0" fixed="1" version="0.016">
+<descriptor descriptor="gemini.torrentMaker.Perspective" id="&lt;Torrent_Maker&gt;" label="&lt;Torrent Maker&gt;"/>
+<alwaysOnActionSet id="org.eclipse.ui.actionSet.openFiles"/>
+<alwaysOnActionSet id="eu.kalafatic.gemini.bt.client.controller.actionSet1"/>
+<alwaysOnActionSet id="eu.kalafatic.gemini.bt.torrentMaker.controllerr.actionSet1"/>
+<alwaysOnActionSet id="eu.kalafatic.gemini.core.actionSet1"/>
+<alwaysOnActionSet id="eu.kalafatic.gemini.core.actionSet2"/>
+<alwaysOnActionSet id="eu.kalafatic.gemini.core.actionSet3"/>
+<view id="org.eclipse.ui.internal.introview"/>
+<fastViewBars/>
+<viewLayoutRec closeable="false" id="gemini.torrentMaker.TorrentsTree" moveable="false"/>
+<viewLayoutRec closeable="false" id="gemini.torrentMaker.TorrentSettings" moveable="false"/>
+<layout>
+<mainWindow>
+<info folder="true" part="topLeft">
+<folder activePageID="gemini.torrentMaker.TorrentSettings" appearance="2" expanded="2">
+<page content="gemini.torrentMaker.TorrentSettings" label="LabelNotFound"/>
+</folder>
+</info>
+<info folder="true" part="stickyFolderRight" ratio="0.75" ratioLeft="612" ratioRight="204" relationship="2" relative="topLeft">
+<folder activePageID="org.eclipse.ui.internal.introview" appearance="2" expanded="2">
+<page content="org.eclipse.ui.internal.introview" label="Welcome"/>
+<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+</presentation>
+</folder>
+</info>
+<info part="org.eclipse.ui.editorss" ratio="0.6997549" ratioLeft="571" ratioRight="245" relationship="2" relative="topLeft"/>
+<info folder="true" part="topRight" ratio="0.2489796" ratioLeft="61" ratioRight="184" relationship="2" relative="org.eclipse.ui.editorss">
+<folder activePageID="gemini.torrentMaker.TorrentsTree" appearance="2" expanded="2">
+<page content="gemini.torrentMaker.TorrentsTree" label="LabelNotFound"/>
+</folder>
+</info>
+</mainWindow>
+</layout>
+</perspective>
+</perspectives>
+<workingSets/>
+<navigationHistory/>
+</page>
+<workbenchWindowAdvisor/>
+<actionBarAdvisor/>
+<trimLayout>
+<trimArea IMemento.internal.id="128">
+<trimItem IMemento.internal.id="org.eclipse.ui.internal.WorkbenchWindow.topBar"/>
+</trimArea>
+<trimArea IMemento.internal.id="1024">
+<trimItem IMemento.internal.id="org.eclipse.ui.internal.HeapStatus"/>
+<trimItem IMemento.internal.id="org.eclipse.ui.internal.progress.ProgressRegion"/>
+<trimItem IMemento.internal.id="org.eclise.ui.internal.FastViewBar"/>
+<trimItem IMemento.internal.id="org.eclipse.jface.action.StatusLineManager"/>
+</trimArea>
+</trimLayout>
+</window>
+<mruList/>
+</workbench>

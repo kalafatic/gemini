@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/eu.kalafatic.gemini.stat.model/src"
+    modelPluginID="eu.kalafatic.gemini.stat.model" modelName="Statistics" importerID="org.eclipse.emf.importer.ecore"
+    copyrightFields="false">
+  <foreignModel>Statistics.ecore</foreignModel>
+  <genPackages prefix="Statistics" basePackage="eu.kalafatic.gemini.stat.model" disposableProviderFactory="true"
+      ecorePackage="Statistics.ecore#/">
+    <genClasses ecoreClass="Statistics.ecore#//Statistics">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Statistics.ecore#//Statistics/statMap"/>
+    </genClasses>
+    <genClasses ecoreClass="Statistics.ecore#//Study">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Statistics.ecore#//Study/graphs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Statistics.ecore#//Study/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Statistics.ecore#//Graph">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Statistics.ecore#//Graph/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Statistics.ecore#//Graph/coordinates"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Statistics.ecore#//Graph/active"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Statistics.ecore#//Graph/nameX"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Statistics.ecore#//Graph/nameY"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Statistics.ecore#//Graph/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Statistics.ecore#//Graph/data"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Statistics.ecore#//Graph/series"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Statistics.ecore#//Graph/catSeries"/>
+    </genClasses>
+    <genClasses ecoreClass="Statistics.ecore#//StringToStudyMapEntry">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Statistics.ecore#//StringToStudyMapEntry/key"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Statistics.ecore#//StringToStudyMapEntry/value"/>
+    </genClasses>
+    <genClasses ecoreClass="Statistics.ecore#//StringToGraphMapEntry">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Statistics.ecore#//StringToGraphMapEntry/key"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Statistics.ecore#//StringToGraphMapEntry/value"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

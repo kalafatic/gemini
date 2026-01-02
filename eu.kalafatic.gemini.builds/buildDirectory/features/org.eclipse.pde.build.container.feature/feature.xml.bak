@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature id="org.eclipse.pde.build.container.feature" version="1.0.0">
+	<includes id="core.root.feature" version="3.0.0.qualifier"/>
+	<includes id="eu.kalafatic.gemini.core.module" version="3.0.0.qualifier"/>

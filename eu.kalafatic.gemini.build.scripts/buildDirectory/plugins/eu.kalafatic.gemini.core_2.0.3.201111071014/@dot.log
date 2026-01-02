@@ -1,0 +1,481 @@
+# 7.11.11 10:14:32 CET
+# Eclipse Compiler for Java(TM) 0.B76_R37x, 3.7.1, Copyright IBM Corp 2000, 2011. All rights reserved.
+----------
+1. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\Activator.java (at line 70)
+	private static Preferences preferences;
+	                           ^^^^^^^^^^^
+The value of the field Activator.preferences is not used
+----------
+2. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\Activator.java (at line 78)
+	ServiceRegistration policyRegistration;
+	^^^^^^^^^^^^^^^^^^^
+ServiceRegistration is a raw type. References to generic type ServiceRegistration<S> should be parameterized
+----------
+----------
+3. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\Application.java (at line 53)
+	private Map<String, List<String>> commands = new HashMap<String, List<String>>();
+	                                  ^^^^^^^^
+The value of the field Application.commands is not used
+----------
+----------
+4. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\application\ApplicationWorkbenchWindowAdvisor.java (at line 45)
+	import org.eclipse.ui.internal.splash.SplashHandlerFactory;
+	       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Discouraged access: The type SplashHandlerFactory is not accessible due to restriction on classpath entry C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins\org.eclipse.ui.workbench_3.7.0.I20110519-0100.jar
+----------
+5. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\application\ApplicationWorkbenchWindowAdvisor.java (at line 95)
+	private final String PROP_SPLASH_HANDLE = "org.eclipse.equinox.launcher.splash.handle"; //$NON-NLS-1$
+	                     ^^^^^^^^^^^^^^^^^^
+The value of the field ApplicationWorkbenchWindowAdvisor.PROP_SPLASH_HANDLE is not used
+----------
+6. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\application\ApplicationWorkbenchWindowAdvisor.java (at line 97)
+	private static final String JUSTUPDATED = "justUpdated";
+	                            ^^^^^^^^^^^
+The value of the field ApplicationWorkbenchWindowAdvisor.JUSTUPDATED is not used
+----------
+7. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\application\ApplicationWorkbenchWindowAdvisor.java (at line 100)
+	private boolean alreadyDownloaded;
+	                ^^^^^^^^^^^^^^^^^
+The value of the field ApplicationWorkbenchWindowAdvisor.alreadyDownloaded is not used
+----------
+8. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\application\ApplicationWorkbenchWindowAdvisor.java (at line 295)
+	private EclipseSplashHandler getSplash() {
+	                             ^^^^^^^^^^^
+The method getSplash() from the type ApplicationWorkbenchWindowAdvisor is never used locally
+----------
+9. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\application\ApplicationWorkbenchWindowAdvisor.java (at line 300)
+	splash = (GeminiSplashHandler) SplashHandlerFactory
+	                               ^^^^^^^^^^^^^^^^^^^^
+Discouraged access: The type SplashHandlerFactory is not accessible due to restriction on classpath entry C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins\org.eclipse.ui.workbench_3.7.0.I20110519-0100.jar
+----------
+10. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\application\ApplicationWorkbenchWindowAdvisor.java (at line 300)
+	splash = (GeminiSplashHandler) SplashHandlerFactory
+						.findSplashHandlerFor(product);
+	                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Discouraged access: The method findSplashHandlerFor(IProduct) from the type SplashHandlerFactory is not accessible due to restriction on classpath entry C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins\org.eclipse.ui.workbench_3.7.0.I20110519-0100.jar
+----------
+----------
+11. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\dialogs\LoginSplashHandler.java (at line 221)
+	final String username = fTextUsername.getText();
+	             ^^^^^^^^
+The value of the local variable username is not used
+----------
+12. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\dialogs\LoginSplashHandler.java (at line 222)
+	final String password = fTextPassword.getText();
+	             ^^^^^^^^
+The value of the local variable password is not used
+----------
+----------
+13. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\factories\GUIFactory.java (at line 50)
+	private Composite parent;
+	                  ^^^^^^
+The value of the field GUIFactory.parent is not used
+----------
+----------
+14. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\hack\BasicSplashHandler.java (at line 27)
+	import org.eclipse.ui.internal.StartupThreading.StartupRunnable;
+	       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Discouraged access: The type StartupThreading.StartupRunnable is not accessible due to restriction on classpath entry C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins\org.eclipse.ui.workbench_3.7.0.I20110519-0100.jar
+----------
+15. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\hack\BasicSplashHandler.java (at line 330)
+	StartupRunnable startupRunnable = new StartupRunnable() {
+	^^^^^^^^^^^^^^^
+Discouraged access: The type StartupThreading.StartupRunnable is not accessible due to restriction on classpath entry C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins\org.eclipse.ui.workbench_3.7.0.I20110519-0100.jar
+----------
+16. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\hack\BasicSplashHandler.java (at line 330)
+	StartupRunnable startupRunnable = new StartupRunnable() {
+	                                      ^^^^^^^^^^^^^^^
+Discouraged access: The type StartupThreading.StartupRunnable is not accessible due to restriction on classpath entry C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins\org.eclipse.ui.workbench_3.7.0.I20110519-0100.jar
+----------
+----------
+17. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\hack\EclipseSplashHandler.java (at line 25)
+	import org.eclipse.ui.internal.util.PrefUtil;
+	       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Discouraged access: The type PrefUtil is not accessible due to restriction on classpath entry C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins\org.eclipse.ui.workbench_3.7.0.I20110519-0100.jar
+----------
+----------
+18. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\hack\KeyAssistDialog.java (at line 55)
+	import org.eclipse.ui.internal.keys.KeyAssistMessages;
+	       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Discouraged access: The type KeyAssistMessages is not accessible due to restriction on classpath entry C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins\org.eclipse.ui.workbench_3.7.0.I20110519-0100.jar
+----------
+19. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\hack\KeyAssistDialog.java (at line 56)
+	import org.eclipse.ui.internal.keys.WorkbenchKeyboard;
+	       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Discouraged access: The type WorkbenchKeyboard is not accessible due to restriction on classpath entry C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins\org.eclipse.ui.workbench_3.7.0.I20110519-0100.jar
+----------
+20. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\hack\KeyAssistDialog.java (at line 106)
+	private final List bindings = new ArrayList();
+	              ^^^^
+List is a raw type. References to generic type List<E> should be parameterized
+----------
+21. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\hack\KeyAssistDialog.java (at line 106)
+	private final List bindings = new ArrayList();
+	                                  ^^^^^^^^^
+ArrayList is a raw type. References to generic type ArrayList<E> should be parameterized
+----------
+22. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\hack\KeyAssistDialog.java (at line 138)
+	private final WorkbenchKeyboard workbenchKeyboard;
+	              ^^^^^^^^^^^^^^^^^
+Discouraged access: The type WorkbenchKeyboard is not accessible due to restriction on classpath entry C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins\org.eclipse.ui.workbench_3.7.0.I20110519-0100.jar
+----------
+23. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\hack\KeyAssistDialog.java (at line 138)
+	private final WorkbenchKeyboard workbenchKeyboard;
+	                                ^^^^^^^^^^^^^^^^^
+The value of the field KeyAssistDialog.workbenchKeyboard is not used
+----------
+24. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\hack\KeyAssistDialog.java (at line 145)
+	private SortedMap conflictMatches;
+	        ^^^^^^^^^
+SortedMap is a raw type. References to generic type SortedMap<K,V> should be parameterized
+----------
+25. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\hack\KeyAssistDialog.java (at line 165)
+	final WorkbenchKeyboard associatedKeyboard,
+	      ^^^^^^^^^^^^^^^^^
+Discouraged access: The type WorkbenchKeyboard is not accessible due to restriction on classpath entry C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins\org.eclipse.ui.workbench_3.7.0.I20110519-0100.jar
+----------
+26. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\hack\KeyAssistDialog.java (at line 397)
+	return NLS.bind(KeyAssistMessages.openPreferencePage,
+	                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Discouraged access: The type KeyAssistMessages is not accessible due to restriction on classpath entry C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins\org.eclipse.ui.workbench_3.7.0.I20110519-0100.jar
+----------
+27. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\hack\KeyAssistDialog.java (at line 397)
+	return NLS.bind(KeyAssistMessages.openPreferencePage,
+	                                  ^^^^^^^^^^^^^^^^^^
+Discouraged access: The field openPreferencePage from the type KeyAssistMessages is not accessible due to restriction on classpath entry C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins\org.eclipse.ui.workbench_3.7.0.I20110519-0100.jar
+----------
+28. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\hack\KeyAssistDialog.java (at line 425)
+	final SortedMap partialMatches;
+	      ^^^^^^^^^
+SortedMap is a raw type. References to generic type SortedMap<K,V> should be parameterized
+----------
+29. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\hack\KeyAssistDialog.java (at line 453)
+	noMatchesLabel.setText(KeyAssistMessages.NoMatches_Message);
+	                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Discouraged access: The type KeyAssistMessages is not accessible due to restriction on classpath entry C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins\org.eclipse.ui.workbench_3.7.0.I20110519-0100.jar
+----------
+30. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\hack\KeyAssistDialog.java (at line 453)
+	noMatchesLabel.setText(KeyAssistMessages.NoMatches_Message);
+	                                         ^^^^^^^^^^^^^^^^^
+Discouraged access: The field NoMatches_Message from the type KeyAssistMessages is not accessible due to restriction on classpath entry C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins\org.eclipse.ui.workbench_3.7.0.I20110519-0100.jar
+----------
+31. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\hack\KeyAssistDialog.java (at line 471)
+	final SortedMap partialMatches) {
+	      ^^^^^^^^^
+SortedMap is a raw type. References to generic type SortedMap<K,V> should be parameterized
+----------
+32. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\hack\KeyAssistDialog.java (at line 485)
+	final Iterator itemsItr = partialMatches.entrySet().iterator();
+	      ^^^^^^^^
+Iterator is a raw type. References to generic type Iterator<E> should be parameterized
+----------
+33. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\hack\KeyAssistDialog.java (at line 487)
+	final Map.Entry entry = (Map.Entry) itemsItr.next();
+	      ^^^^^^^^^
+Map.Entry is a raw type. References to generic type Map<K,V>.Entry<K,V> should be parameterized
+----------
+34. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\hack\KeyAssistDialog.java (at line 487)
+	final Map.Entry entry = (Map.Entry) itemsItr.next();
+	                         ^^^^^^^^^
+Map.Entry is a raw type. References to generic type Map<K,V>.Entry<K,V> should be parameterized
+----------
+35. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\hack\KeyAssistDialog.java (at line 497)
+	bindings.add(binding);
+	^^^^^^^^^^^^^^^^^^^^^
+Type safety: The method add(Object) belongs to the raw type List. References to generic type List<E> should be parameterized
+----------
+36. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\hack\KeyAssistDialog.java (at line 552)
+	final Binding binding = (Binding) bindings.get(selectionIndex);
+	              ^^^^^^^
+The value of the local variable binding is not used
+----------
+37. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\hack\KeyAssistDialog.java (at line 571)
+	private final SortedMap getPartialMatches() {
+	              ^^^^^^^^^
+SortedMap is a raw type. References to generic type SortedMap<K,V> should be parameterized
+----------
+38. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\hack\KeyAssistDialog.java (at line 573)
+	final Map partialMatches = bindingService
+	      ^^^
+Map is a raw type. References to generic type Map<K,V> should be parameterized
+----------
+39. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\hack\KeyAssistDialog.java (at line 577)
+	final SortedMap sortedMatches = new TreeMap(new Comparator() {
+	      ^^^^^^^^^
+SortedMap is a raw type. References to generic type SortedMap<K,V> should be parameterized
+----------
+40. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\hack\KeyAssistDialog.java (at line 577)
+	final SortedMap sortedMatches = new TreeMap(new Comparator() {
+			@Override
+			public final int compare(final Object a, final Object b) {
+				final Binding bindingA = (Binding) a;
+				final Binding bindingB = (Binding) b;
+				final ParameterizedCommand commandA = bindingA
+						.getParameterizedCommand();
+				final ParameterizedCommand commandB = bindingB
+						.getParameterizedCommand();
+				try {
+					return commandA.getName().compareTo(commandB.getName());
+				} catch (final NotDefinedException e) {
+					// should not happen
+					return 0;
+				}
+			}
+		});
+	                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Type safety: The constructor TreeMap(Comparator) belongs to the raw type TreeMap. References to generic type TreeMap<K,V> should be parameterized
+----------
+41. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\hack\KeyAssistDialog.java (at line 577)
+	final SortedMap sortedMatches = new TreeMap(new Comparator() {
+	                                    ^^^^^^^
+TreeMap is a raw type. References to generic type TreeMap<K,V> should be parameterized
+----------
+42. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\hack\KeyAssistDialog.java (at line 577)
+	final SortedMap sortedMatches = new TreeMap(new Comparator() {
+	                                                ^^^^^^^^^^
+Comparator is a raw type. References to generic type Comparator<T> should be parameterized
+----------
+43. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\hack\KeyAssistDialog.java (at line 600)
+	final Iterator partialMatchItr = partialMatches.entrySet().iterator();
+	      ^^^^^^^^
+Iterator is a raw type. References to generic type Iterator<E> should be parameterized
+----------
+44. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\hack\KeyAssistDialog.java (at line 602)
+	final Map.Entry entry = (Map.Entry) partialMatchItr.next();
+	      ^^^^^^^^^
+Map.Entry is a raw type. References to generic type Map<K,V>.Entry<K,V> should be parameterized
+----------
+45. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\hack\KeyAssistDialog.java (at line 602)
+	final Map.Entry entry = (Map.Entry) partialMatchItr.next();
+	                         ^^^^^^^^^
+Map.Entry is a raw type. References to generic type Map<K,V>.Entry<K,V> should be parameterized
+----------
+46. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\hack\KeyAssistDialog.java (at line 612)
+	sortedMatches.put(binding, bestActiveBindingFor == null ? null
+						: bestActiveBindingFor.format());
+	^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Type safety: The method put(Object, Object) belongs to the raw type Map. References to generic type Map<K,V> should be parameterized
+----------
+47. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\hack\KeyAssistDialog.java (at line 669)
+	public final int open(Collection bindings) {
+	                      ^^^^^^^^^^
+Collection is a raw type. References to generic type Collection<E> should be parameterized
+----------
+48. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\hack\KeyAssistDialog.java (at line 670)
+	conflictMatches = new TreeMap(new Comparator() {
+			@Override
+			public final int compare(final Object a, final Object b) {
+				final Binding bindingA = (Binding) a;
+				final Binding bindingB = (Binding) b;
+				final ParameterizedCommand commandA = bindingA
+						.getParameterizedCommand();
+				final ParameterizedCommand commandB = bindingB
+						.getParameterizedCommand();
+				try {
+					return commandA.getName().compareTo(commandB.getName());
+				} catch (final NotDefinedException e) {
+					// should not happen
+					return 0;
+				}
+			}
+		});
+	                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Type safety: The constructor TreeMap(Comparator) belongs to the raw type TreeMap. References to generic type TreeMap<K,V> should be parameterized
+----------
+49. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\hack\KeyAssistDialog.java (at line 670)
+	conflictMatches = new TreeMap(new Comparator() {
+	                      ^^^^^^^
+TreeMap is a raw type. References to generic type TreeMap<K,V> should be parameterized
+----------
+50. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\hack\KeyAssistDialog.java (at line 670)
+	conflictMatches = new TreeMap(new Comparator() {
+	                                  ^^^^^^^^^^
+Comparator is a raw type. References to generic type Comparator<T> should be parameterized
+----------
+51. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\hack\KeyAssistDialog.java (at line 687)
+	Iterator i = bindings.iterator();
+	^^^^^^^^
+Iterator is a raw type. References to generic type Iterator<E> should be parameterized
+----------
+52. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\hack\KeyAssistDialog.java (at line 692)
+	conflictMatches.put(b, bestActiveBindingFor == null ? null
+					: bestActiveBindingFor.format());
+	^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Type safety: The method put(Object, Object) belongs to the raw type Map. References to generic type Map<K,V> should be parameterized
+----------
+----------
+53. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\hack\KeyBindingState.java (at line 20)
+	import org.eclipse.ui.internal.WorkbenchWindow;
+	       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Discouraged access: The type WorkbenchWindow is not accessible due to restriction on classpath entry C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins\org.eclipse.ui.workbench_3.7.0.I20110519-0100.jar
+----------
+54. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\hack\KeyBindingState.java (at line 107)
+	if (associatedWindow instanceof WorkbenchWindow) {
+	                                ^^^^^^^^^^^^^^^
+Discouraged access: The type WorkbenchWindow is not accessible due to restriction on classpath entry C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins\org.eclipse.ui.workbench_3.7.0.I20110519-0100.jar
+----------
+55. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\hack\KeyBindingState.java (at line 108)
+	WorkbenchWindow window = (WorkbenchWindow) associatedWindow;
+	^^^^^^^^^^^^^^^
+Discouraged access: The type WorkbenchWindow is not accessible due to restriction on classpath entry C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins\org.eclipse.ui.workbench_3.7.0.I20110519-0100.jar
+----------
+56. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\hack\KeyBindingState.java (at line 108)
+	WorkbenchWindow window = (WorkbenchWindow) associatedWindow;
+	                          ^^^^^^^^^^^^^^^
+Discouraged access: The type WorkbenchWindow is not accessible due to restriction on classpath entry C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins\org.eclipse.ui.workbench_3.7.0.I20110519-0100.jar
+----------
+57. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\hack\KeyBindingState.java (at line 109)
+	IStatusLineManager statusLine = window.getStatusLineManager();
+	                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Discouraged access: The method getStatusLineManager() from the type WorkbenchWindow is not accessible due to restriction on classpath entry C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins\org.eclipse.ui.workbench_3.7.0.I20110519-0100.jar
+----------
+----------
+58. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\hack\StatusLineContributionItem.java (at line 42)
+	private String id = null;
+	               ^^
+The value of the field StatusLineContributionItem.id is not used
+----------
+59. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\hack\StatusLineContributionItem.java (at line 51)
+	private int charWidth;
+	            ^^^^^^^^^
+The value of the field StatusLineContributionItem.charWidth is not used
+----------
+60. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\hack\StatusLineContributionItem.java (at line 66)
+	private int widthHint = -1;
+	            ^^^^^^^^^
+The value of the field StatusLineContributionItem.widthHint is not used
+----------
+61. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\hack\StatusLineContributionItem.java (at line 69)
+	private int heightHint = -1;
+	            ^^^^^^^^^^
+The value of the field StatusLineContributionItem.heightHint is not used
+----------
+62. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\hack\StatusLineContributionItem.java (at line 72)
+	private static long refreshTime = System.currentTimeMillis();
+	                    ^^^^^^^^^^^
+The value of the field StatusLineContributionItem.refreshTime is not used
+----------
+----------
+63. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\handlers\KeyAssistHandler.java (at line 33)
+	@SuppressWarnings("restriction")
+	                  ^^^^^^^^^^^^^
+Unnecessary @SuppressWarnings("restriction")
+----------
+----------
+64. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\handlers\SoftwareUpdatesHandler.java (at line 36)
+	@SuppressWarnings({ "restriction", "deprecation" })
+	                    ^^^^^^^^^^^^^
+Unnecessary @SuppressWarnings("restriction")
+----------
+65. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\handlers\SoftwareUpdatesHandler.java (at line 103)
+	private UpdateSearchRequest getSearchRequest() {
+	                            ^^^^^^^^^^^^^^^^^^
+The method getSearchRequest() from the type SoftwareUpdatesHandler is never used locally
+----------
+----------
+66. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\p2\CloudPolicy.java (at line 32)
+	int preferredWidth = prefs
+	    ^^^^^^^^^^^^^^
+The value of the local variable preferredWidth is not used
+----------
+67. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\p2\CloudPolicy.java (at line 34)
+	int preferredHeight = prefs
+	    ^^^^^^^^^^^^^^^
+The value of the local variable preferredHeight is not used
+----------
+----------
+68. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\perspectives\CorePerspective.java (at line 46)
+	private static final String MULTI_VIEW = ":*";
+	                            ^^^^^^^^^^
+The value of the field CorePerspective.MULTI_VIEW is not used
+----------
+----------
+69. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\preferences\OSIntegrationPreferencePage.java (at line 92)
+	private Text osPathText;
+	             ^^^^^^^^^^
+The value of the field OSIntegrationPreferencePage.osPathText is not used
+----------
+----------
+70. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\utils\ImageUtil.java (at line 26)
+	import org.eclipse.ui.internal.WorkbenchPlugin;
+	       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Discouraged access: The type WorkbenchPlugin is not accessible due to restriction on classpath entry C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins\org.eclipse.ui.workbench_3.7.0.I20110519-0100.jar
+----------
+71. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\utils\ImageUtil.java (at line 27)
+	import org.eclipse.ui.internal.misc.StatusUtil;
+	       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Discouraged access: The type StatusUtil is not accessible due to restriction on classpath entry C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins\org.eclipse.ui.workbench_3.7.0.I20110519-0100.jar
+----------
+72. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\utils\ImageUtil.java (at line 158)
+	private static Image resize(Image image, int width, int height) {
+	                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The method resize(Image, int, int) from the type ImageUtil is never used locally
+----------
+----------
+73. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\utils\Log.java (at line 217)
+	LogElement logElement = LOGS.remove(LOGS.size()-1);
+	           ^^^^^^^^^^
+The value of the local variable logElement is not used
+----------
+----------
+74. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\utils\OpenFileUtil.java (at line 54)
+	Process process = null;
+	        ^^^^^^^
+The value of the local variable process is not used
+----------
+----------
+75. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\utils\RCPUtil.java (at line 745)
+	private static class WorkaroundTableLayout extends TableLayout {
+	                     ^^^^^^^^^^^^^^^^^^^^^
+The type RCPUtil.WorkaroundTableLayout is never used locally
+----------
+76. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\utils\RCPUtil.java (at line 759)
+	public WorkaroundTableLayout(List<ColumnLayoutData> originalData) {
+	       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The constructor RCPUtil.WorkaroundTableLayout(List<ColumnLayoutData>) is never used locally
+----------
+77. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\utils\RCPUtil.java (at line 776)
+	public List<ColumnLayoutData> getOriginalData() {
+	                              ^^^^^^^^^^^^^^^^^
+The method getOriginalData() from the type RCPUtil.WorkaroundTableLayout is never used locally
+----------
+----------
+78. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\utils\SSLUtil.java (at line 142)
+	private void setTrustedKS() {
+	             ^^^^^^^^^^^^^^
+The method setTrustedKS() from the type SSLUtil is never used locally
+----------
+----------
+79. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\utils\WinFileAssociationUtil.java (at line 82)
+	String assoc="assoc ."+extension+"="+appName;
+	       ^^^^^
+The value of the local variable assoc is not used
+----------
+80. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\utils\WinFileAssociationUtil.java (at line 83)
+	String ftype="ftype "+appName+"="+appPath;
+	       ^^^^^
+The value of the local variable ftype is not used
+----------
+81. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\utils\WinFileAssociationUtil.java (at line 86)
+	Process pr = rt.exec("cmd /c start");
+	        ^^
+The value of the local variable pr is not used
+----------
+----------
+82. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\views\InteractiveSplashHandler.java (at line 122)
+	String foregroundColorString = null;
+	       ^^^^^^^^^^^^^^^^^^^^^
+The value of the local variable foregroundColorString is not used
+----------
+----------
+83. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\views\LoginSplashHandler.java (at line 217)
+	final String username = fTextUsername.getText();
+	             ^^^^^^^^
+The value of the local variable username is not used
+----------
+84. WARNING in C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\src\eu\kalafatic\gemini\core\views\LoginSplashHandler.java (at line 218)
+	final String password = fTextPassword.getText();
+	             ^^^^^^^^
+The value of the local variable password is not used
+----------
+84 problems (84 warnings)[226 .class files generated]

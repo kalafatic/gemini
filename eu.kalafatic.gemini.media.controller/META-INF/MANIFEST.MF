@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %Bundle-Name.0
+Bundle-SymbolicName: eu.kalafatic.gemini.media.controller
+Bundle-Version: 3.0.0.qualifier
+Bundle-Activator: eu.kalafatic.gemini.media.controller.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-15
+Bundle-Vendor: %Bundle-Vendor.0
+Bundle-Localization: plugin
+Import-Package: eu.kalafatic.gemini.core.interfaces
+Export-Package: eu.kalafatic.gemini.media.controller.lib

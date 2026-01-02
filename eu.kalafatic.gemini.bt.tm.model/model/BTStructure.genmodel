@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/eu.kalafatic.gemini.bt.tm.model/src"
+    modelPluginID="eu.kalafatic.gemini.bt.tm.model" modelName="BTStructure" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="6.0" copyrightFields="false" usedGenPackages="../../eu.kalafatic.gemini.bt.client.model/model/Torrents.genmodel#//torrents">
+  <foreignModel>BTStructure.ecore</foreignModel>
+  <genPackages prefix="BtStructure" basePackage="eu.kalafatic.gemini.bt.tm.model"
+      disposableProviderFactory="true" ecorePackage="BTStructure.ecore#/">
+    <genDataTypes ecoreDataType="BTStructure.ecore#//EIntegerArray"/>
+    <genClasses ecoreClass="BTStructure.ecore#//BTStructure">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BTStructure.ecore#//BTStructure/newTorrents"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BTStructure.ecore#//BTStructure/trackersMap"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BTStructure.ecore#//BTStructure/treeObjects"/>
+    </genClasses>
+    <genClasses ecoreClass="BTStructure.ecore#//Tracker">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BTStructure.ecore#//Tracker/checked"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BTStructure.ecore#//Tracker/announce"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BTStructure.ecore#//Tracker/comment"/>
+    </genClasses>
+    <genClasses ecoreClass="BTStructure.ecore#//FileTreeObject">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BTStructure.ecore#//FileTreeObject/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference BTStructure.ecore#//FileTreeObject/parent"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BTStructure.ecore#//FileTreeObject/file"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BTStructure.ecore#//FileTreeObject/path"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BTStructure.ecore#//FileTreeObject/md5Sum"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BTStructure.ecore#//FileTreeObject/length"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BTStructure.ecore#//FileTreeObject/childMap"/>
+    </genClasses>
+    <genClasses ecoreClass="BTStructure.ecore#//StringToTrackerMapEntry">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BTStructure.ecore#//StringToTrackerMapEntry/key"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BTStructure.ecore#//StringToTrackerMapEntry/value"/>
+    </genClasses>
+    <genClasses ecoreClass="BTStructure.ecore#//StringToFileTreeObjectMapEntry">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BTStructure.ecore#//StringToFileTreeObjectMapEntry/key"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BTStructure.ecore#//StringToFileTreeObjectMapEntry/value"/>
+    </genClasses>
+    <nestedGenPackages prefix="BtStructureConstants" basePackage="eu.kalafatic.gemini.bt.tm.model"
+        disposableProviderFactory="true" multipleEditorPages="false" ecorePackage="BTStructure.ecore#//btStructureConstants">
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="BTStructure.ecore#//btStructureConstants/ETorrentStructure">
+        <genEnumLiterals ecoreEnumLiteral="BTStructure.ecore#//btStructureConstants/ETorrentStructure/ANNOUNCE"/>
+        <genEnumLiterals ecoreEnumLiteral="BTStructure.ecore#//btStructureConstants/ETorrentStructure/ANNOUNCE_LIST"/>
+        <genEnumLiterals ecoreEnumLiteral="BTStructure.ecore#//btStructureConstants/ETorrentStructure/CREATED_BY"/>
+        <genEnumLiterals ecoreEnumLiteral="BTStructure.ecore#//btStructureConstants/ETorrentStructure/CREATION_DATE"/>
+        <genEnumLiterals ecoreEnumLiteral="BTStructure.ecore#//btStructureConstants/ETorrentStructure/ENCODING"/>
+        <genEnumLiterals ecoreEnumLiteral="BTStructure.ecore#//btStructureConstants/ETorrentStructure/INFO"/>
+        <genEnumLiterals ecoreEnumLiteral="BTStructure.ecore#//btStructureConstants/ETorrentStructure/NAME"/>
+        <genEnumLiterals ecoreEnumLiteral="BTStructure.ecore#//btStructureConstants/ETorrentStructure/FILES"/>
+        <genEnumLiterals ecoreEnumLiteral="BTStructure.ecore#//btStructureConstants/ETorrentStructure/LENGTH"/>
+        <genEnumLiterals ecoreEnumLiteral="BTStructure.ecore#//btStructureConstants/ETorrentStructure/PATH"/>
+        <genEnumLiterals ecoreEnumLiteral="BTStructure.ecore#//btStructureConstants/ETorrentStructure/PIECES"/>
+        <genEnumLiterals ecoreEnumLiteral="BTStructure.ecore#//btStructureConstants/ETorrentStructure/PIECE_LENGTH"/>
+        <genEnumLiterals ecoreEnumLiteral="BTStructure.ecore#//btStructureConstants/ETorrentStructure/PRIVATE"/>
+        <genEnumLiterals ecoreEnumLiteral="BTStructure.ecore#//btStructureConstants/ETorrentStructure/MD5SUM"/>
+        <genEnumLiterals ecoreEnumLiteral="BTStructure.ecore#//btStructureConstants/ETorrentStructure/COMMENT"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="BTStructure.ecore#//btStructureConstants/EBlockSize">
+        <genEnumLiterals ecoreEnumLiteral="BTStructure.ecore#//btStructureConstants/EBlockSize/P_FOUR"/>
+        <genEnumLiterals ecoreEnumLiteral="BTStructure.ecore#//btStructureConstants/EBlockSize/P_FIVE"/>
+        <genEnumLiterals ecoreEnumLiteral="BTStructure.ecore#//btStructureConstants/EBlockSize/P_SIX"/>
+        <genEnumLiterals ecoreEnumLiteral="BTStructure.ecore#//btStructureConstants/EBlockSize/P_SEVEN"/>
+        <genEnumLiterals ecoreEnumLiteral="BTStructure.ecore#//btStructureConstants/EBlockSize/P_EIGHT"/>
+        <genEnumLiterals ecoreEnumLiteral="BTStructure.ecore#//btStructureConstants/EBlockSize/P_NINE"/>
+        <genEnumLiterals ecoreEnumLiteral="BTStructure.ecore#//btStructureConstants/EBlockSize/P_TEN"/>
+        <genEnumLiterals ecoreEnumLiteral="BTStructure.ecore#//btStructureConstants/EBlockSize/P_ELEVEN"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="BTStructure.ecore#//btStructureConstants/ETMMessages">
+        <genEnumLiterals ecoreEnumLiteral="BTStructure.ecore#//btStructureConstants/ETMMessages/GENERATED"/>
+      </genEnums>
+    </nestedGenPackages>
+  </genPackages>
+</genmodel:GenModel>

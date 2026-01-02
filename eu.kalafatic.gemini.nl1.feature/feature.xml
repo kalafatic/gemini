@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="eu.kalafatic.gemini.nl1.feature"
+      label="Gemini - NL1 Feature"
+      version="3.0.0.qualifier"
+      provider-name="Petr Kalafatic">
+
+   <description url="http://www.example.com/description">
+      [Enter Feature Description here.]
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+      [Enter Copyright Description here.]
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      [Enter License Description here.]
+   </license>
+
+   <url>
+      <update label="Gemini - Update Site" url="http://kalafatic.eu:6885/Web/Projects/Gemini/Update"/>
+   </url>
+
+   <plugin
+         id="eu.kalafatic.gemini.bt.client.controller.nl1"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"/>
+
+   <plugin
+         id="eu.kalafatic.gemini.bt.client.model.nl1"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"/>
+
+   <plugin
+         id="eu.kalafatic.gemini.bt.client.net.controller.nl1"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"/>
+
+   <plugin
+         id="eu.kalafatic.gemini.bt.client.net.model.nl1"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"/>
+
+   <plugin
+         id="eu.kalafatic.gemini.bt.client.net.view.nl1"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"/>
+
+   <plugin
+         id="eu.kalafatic.gemini.bt.client.view.nl1"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"/>
+
+   <plugin
+         id="eu.kalafatic.gemini.bt.tm.controller.nl1"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"/>
+
+   <plugin
+         id="eu.kalafatic.gemini.bt.tm.model.nl1"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"/>
+
+   <plugin
+         id="eu.kalafatic.gemini.bt.tm.view.nl1"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"/>
+
+   <plugin
+         id="eu.kalafatic.gemini.bt.tracker.controller.nl1"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"/>
+
+   <plugin
+         id="eu.kalafatic.gemini.bt.tracker.model.nl1"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"/>
+
+   <plugin
+         id="eu.kalafatic.gemini.bt.tracker.view.nl1"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"/>
+
+   <plugin
+         id="eu.kalafatic.gemini.core.help.nl1"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"/>
+
+   <plugin
+         id="eu.kalafatic.gemini.webBrowser.controller.nl1"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"/>
+
+   <plugin
+         id="eu.kalafatic.gemini.webBrowser.model.nl1"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"/>
+
+   <plugin
+         id="eu.kalafatic.gemini.webBrowser.view.nl1"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"/>
+
+   <plugin
+         id="eu.kalafatic.gemini.bt.client.net.rc.controller.nl1"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"/>
+
+   <plugin
+         id="eu.kalafatic.gemini.bt.client.net.rc.model.nl1"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"/>
+
+   <plugin
+         id="eu.kalafatic.gemini.bt.client.net.rc.view.nl1"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"/>
+
+   <plugin
+         id="eu.kalafatic.gemini.core.nl1"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"/>
+
+</feature>

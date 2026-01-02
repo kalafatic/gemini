@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="clientNetwork"
+    nsURI="http:///clientNetwork.ecore" nsPrefix="clientNetwork">
+  <eClassifiers xsi:type="ecore:EClass" name="ClientNetwork" eSuperTypes="#//Behaviour">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="swarmMap" upperBound="-1"
+        eType="#//StringToSessionMapEntry" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="semaphor" eType="#//Semaphor"
+        transient="true" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="activeSwarms" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" transient="true"
+        defaultValueLiteral="0"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="forceSwarmsKeys" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" transient="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sheduled" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        transient="true" defaultValueLiteral="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Semaphor">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="connected" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        transient="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="opened" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SwarmSession" eSuperTypes="#//Session #//SwarmInfo #//SwarmContent">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="processedPieces" upperBound="-1"
+        eType="#//IntToPieceEntry" transient="true" containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="uploadedPieces" upperBound="-1"
+        eType="#//IOPiece" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pieceBuffer" lowerBound="1"
+        eType="#//WriteBuffer" transient="true" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="speedContainer" eType="#//SpeedContainer"
+        transient="true" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="obtainingClients" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        transient="true" defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="trackersManager" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"
+        transient="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="searchersManager" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"
+        transient="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="torrent" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"
+        transient="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Session">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="announce" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="channel" eType="#//Channel"
+        transient="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="state" eType="#//networkConstants/EViewsMessages"
+        defaultValueLiteral="Ready"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sheduled" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        transient="true" defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lastActivity" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"
+        transient="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rating" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        transient="true" defaultValueLiteral="0"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="timeout" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"
+        transient="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="duration" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="clients" eType="#//Set"
+        transient="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SwarmInfo">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dwnldStrategy" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="algorithm" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="0"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="createdOnDisc" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="uploadOnly" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SwarmContent">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="trackers" upperBound="-1"
+        eType="#//StringToSessionMapEntry" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="downloads" upperBound="-1"
+        eType="#//StringToClientSessionMapEntry" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="uploads" upperBound="-1"
+        eType="#//StringToClientSessionMapEntry" transient="true" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TrackerSession" eSuperTypes="#//Session">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="response" eType="#//TrackerResponse"
+        transient="true" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nextConnection" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"
+        transient="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="event" eType="#//networkConstants/ETrackerRequestEvent"
+        transient="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="scraped" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DwnldSession" eSuperTypes="#//ClientSession"/>
+  <eClassifiers xsi:type="ecore:EClass" name="UpldSession" eSuperTypes="#//ClientSession"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ClientSession" eSuperTypes="#//Session #//ClientInfo">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="reserved" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"
+        transient="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="canceledBlocks" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" transient="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="receivedKeepAlive" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        transient="true" defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="speedContainer" eType="#//SpeedContainer"
+        transient="true" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ClientInfo">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="clientName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="choking" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="handshakeOK" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="interested" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="bitfield" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"
+        transient="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="seed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="have" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        transient="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TrackerResponse">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="failureReason" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="interval" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="minInterval" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="trackerId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="complete" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="incomplete" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="responseMessage" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IOPiece">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pieceIndex" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="payload" eType="#//ByteBuffer"
+        transient="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="finished" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="position" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="blocks" eType="#//BoolArray"
+        transient="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lockedBlocks" eType="#//BoolArray"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="extTorrent" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"
+        transient="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lastActivity" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"
+        transient="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lock" lowerBound="1" eType="#//Lock"
+        transient="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="color" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        transient="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hash" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WriteBuffer">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="offset" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="size" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pieces" upperBound="-1"
+        eType="#//IOPiece" transient="true" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sheduled" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        transient="true" defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lock" lowerBound="1" eType="#//Lock"
+        transient="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SpeedContainer">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="startTime" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"
+        transient="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dwnldSize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"
+        transient="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="upldSize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"
+        transient="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="speed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"
+        transient="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StringToSessionMapEntry" instanceClassName="java.util.Map$Entry">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//Session"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StringToClientSessionMapEntry" instanceClassName="java.util.Map$Entry">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//ClientSession"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IntToPieceEntry" instanceClassName="java.util.Map$Entry">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//IOPiece"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Behaviour">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="algorithm" eType="#//networkConstants/EStrategy"
+        defaultValueLiteral="Random"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strategy" eType="#//networkConstants/EAlgorithm"
+        defaultValueLiteral="Queuenning"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="BoolArray" instanceClassName="boolean[]"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="ByteBuffer" instanceClassName="java.nio.ByteBuffer"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="Channel" instanceClassName="java.nio.channels.SocketChannel"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="Lock" instanceClassName="java.util.concurrent.locks.ReentrantReadWriteLock"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="Set" instanceClassName="java.util.Set"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="URL" instanceClassName="java.net.URL"/>
+  <eSubpackages name="networkConstants" nsURI="http:///networkConstants.ecore" nsPrefix="networkConstants">
+    <eClassifiers xsi:type="ecore:EEnum" name="ETrackerResponseCode">
+      <eLiterals name="INVALID_REQUEST_TYPE" value="100" literal="Invalid request type: client request was not a HTTP GET"/>
+      <eLiterals name="MISSING_INFO_HASH" value="101" literal="Missing info_hash"/>
+      <eLiterals name="MISSING_PEER_ID" value="102" literal="Missing peer_id"/>
+      <eLiterals name="MISSING_PORT" value="103" literal="Missing port"/>
+      <eLiterals name="INVALID_INFO_HASH" value="150" literal="Invalid infohash: infohash is not 20 bytes long"/>
+      <eLiterals name="INVALID_PEER_ID" value="151" literal="Invalid peerid: peerid is not 20 bytes long"/>
+      <eLiterals name="INVALID_NUMWANT" value="152" literal="Invalid numwant. Client requested more peers than allowed by tracker"/>
+      <eLiterals name="INFO_HASH_NOT_FOUND" value="200" literal="info_hash not found in the database"/>
+      <eLiterals name="FOUND" value="302"/>
+      <eLiterals name="BAD_REQUEST" value="400" literal="Bad Request"/>
+      <eLiterals name="NOT_FOUND" value="404" literal="Not Found"/>
+      <eLiterals name="EVENTLESS_REQUEST" value="500" literal="Client sent an eventless request before the specified time"/>
+      <eLiterals name="GENERIC_ERROR" value="900" literal="Generic error"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="ETrackerRequestProtocol">
+      <eLiterals name="ANNOUNCE" literal=""/>
+      <eLiterals name="INFO_HASH" value="1" literal="?info_hash="/>
+      <eLiterals name="PEER_ID" value="2" literal="&amp;peer_id="/>
+      <eLiterals name="PORT" value="3" literal="&amp;port="/>
+      <eLiterals name="UPLOADED" value="4" literal="&amp;uploaded="/>
+      <eLiterals name="DOWNLOADED" value="5" literal="&amp;downloaded="/>
+      <eLiterals name="LEFT" value="6" literal="&amp;left="/>
+      <eLiterals name="COMPACT" value="7" literal="&amp;compact="/>
+      <eLiterals name="NO_PEER_ID" value="8" literal="&amp;no_peer_id="/>
+      <eLiterals name="IP" value="9" literal="&amp;ip="/>
+      <eLiterals name="NUMWANT" value="10" literal="&amp;numwant="/>
+      <eLiterals name="KEY" value="11" literal="&amp;key="/>
+      <eLiterals name="TRACKER_ID" value="12" literal="&amp;trackerid="/>
+      <eLiterals name="EVENT" value="13" literal="&amp;event="/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="ETrackerResponseProtocol">
+      <eLiterals name="FAILURE_REASON" literal="failure reason"/>
+      <eLiterals name="WARNING_MESSAGE" value="1" literal="warning message"/>
+      <eLiterals name="INTERVAL" value="2" literal="interval"/>
+      <eLiterals name="MIN_INTERVAL" value="3" literal="min interval"/>
+      <eLiterals name="TRACKER_ID" value="4" literal="tracker id"/>
+      <eLiterals name="COMPLETE" value="5" literal="complete"/>
+      <eLiterals name="INCOMPLETE" value="6" literal="incomplete"/>
+      <eLiterals name="PEERS" value="7" literal="peers"/>
+      <eLiterals name="PEER_ID" value="8" literal="peer_id"/>
+      <eLiterals name="IP" value="9" literal="ip"/>
+      <eLiterals name="PORT" value="10" literal="port"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="EClientHandshakeProtocol">
+      <eLiterals name="HANDSHAKE"/>
+      <eLiterals name="PROTOCOL_LEN" value="1"/>
+      <eLiterals name="PROTOCOL_NAME" value="2" literal="PROTOCOL_NAME"/>
+      <eLiterals name="RESERVED" value="3"/>
+      <eLiterals name="INFO_HASH" value="4"/>
+      <eLiterals name="PEER_ID" value="5"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="EClientTransportProtocol">
+      <eLiterals name="CHOKE" literal="0,0,0,1,0"/>
+      <eLiterals name="UNCHOKE" value="1" literal="0,0,0,1,1"/>
+      <eLiterals name="INTERESTED" value="2" literal="0,0,0,1,2"/>
+      <eLiterals name="NOT_INTERESTED" value="3" literal="0,0,0,1,3"/>
+      <eLiterals name="HAVE" value="4" literal="0,0,0,5,4"/>
+      <eLiterals name="BITFIELD" value="5" literal="0,0,0,1,5"/>
+      <eLiterals name="REQUEST" value="6" literal="0,0,0,13,6"/>
+      <eLiterals name="PIECE" value="7" literal="0,0,0,9,7"/>
+      <eLiterals name="CANCEL" value="8" literal="0,0,0,13,8"/>
+      <eLiterals name="DHT_PORT" value="9" literal="0,0,0,3,9"/>
+      <eLiterals name="KEEP_ALIVE" value="10" literal="0,0,0,0"/>
+      <eLiterals name="LT_EXT_MESSAGE" value="11"/>
+      <eLiterals name="HANDSHAKE" value="84" literal="HANDSHAKE"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="ETrackerRequestEvent">
+      <eLiterals name="STARTED" literal="started"/>
+      <eLiterals name="STOPPED" value="1" literal="stopped"/>
+      <eLiterals name="COMPLETED" value="2" literal="completed"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="EViewsMessages">
+      <eLiterals name="READY" value="10" literal="Ready"/>
+      <eLiterals name="ACTIVATED" value="11" literal="Activated"/>
+      <eLiterals name="RUNNING" value="12" literal="Running ... "/>
+      <eLiterals name="PAUSED" value="13" literal="Paused"/>
+      <eLiterals name="STOPPED" value="14" literal="Stopped"/>
+      <eLiterals name="WAITING" value="15" literal="Waiting"/>
+      <eLiterals name="SUSPENDED" value="16" literal="Suspended"/>
+      <eLiterals name="DISABLED" value="17" literal="Disabled"/>
+      <eLiterals name="REJECTED" value="18" literal="Rejected"/>
+      <eLiterals name="FINISHED" value="19" literal="Finished"/>
+      <eLiterals name="READY_TO_TRACKER_HANDSHAKE" value="20" literal="Ready to tracker handshake"/>
+      <eLiterals name="CAN_NOT_CONNECT_TRACKER" value="21" literal="Can not connect tracker"/>
+      <eLiterals name="CONNECTING_TRACKERS" value="22" literal="Connecting trackers ..."/>
+      <eLiterals name="TRACKERS_CONNECTED" value="23" literal="Trackers connected"/>
+      <eLiterals name="TRACKERS_FINISHED" value="24" literal="Trackers finished"/>
+      <eLiterals name="TRACKER_SENT_WARNING" value="25" literal="Tracker sent warning"/>
+      <eLiterals name="TRACKER_SENT_FAILURE" value="26" literal="Tracker sent failure"/>
+      <eLiterals name="SEARCH_FOR_CLIENTS" value="30" literal="Search for clients ..."/>
+      <eLiterals name="SEARCH_FOR_CLIENTS_FINISHED" value="31" literal="Search for clients finished"/>
+      <eLiterals name="CONNECTING_CLIENTS" value="32" literal="Connecting clients ..."/>
+      <eLiterals name="CAN_NOT_CONNECT_CLIENT" value="33" literal="Can not connect client"/>
+      <eLiterals name="CONNECTED_TO_CLIENTS" value="34" literal="Connected to clients"/>
+      <eLiterals name="CLIENT_CONNECTION_ERROR" value="35" literal="Client connection error"/>
+      <eLiterals name="READY_TO_HANDSHAKE" value="40" literal="Ready to  handshake"/>
+      <eLiterals name="READY_TO_RECEIVE_HANDSHAKE" value="41" literal="Ready to receive handshake"/>
+      <eLiterals name="READY_TO_SEND_HANDSHAKE" value="42" literal="Ready to send handshake"/>
+      <eLiterals name="CLIENT_HANDSHAKE_ERROR" value="43" literal="Client handshake error"/>
+      <eLiterals name="CLIENT_HANDSHAKE_OK" value="44" literal="Client handshake OK"/>
+      <eLiterals name="CLIENT_IS_CHOKING" value="45" literal="Client is choking ..."/>
+      <eLiterals name="CLIENT_NOT_INTERESTED" value="46" literal="Not interested ..."/>
+      <eLiterals name="RATIO_EXCEEDED_CHOKING" value="51" literal="D/U ratio exceeded-sending choke"/>
+      <eLiterals name="READY_TO_INTERESTED" value="60" literal="Interested"/>
+      <eLiterals name="PEER_IS_INTERESTED" value="61" literal="Peer is interested"/>
+      <eLiterals name="PEER_NOT_INTERESTED" value="62" literal="Peer is not interested"/>
+      <eLiterals name="RATING_REJECTION" value="63" literal="Rejected due to poor rating.."/>
+      <eLiterals name="READY_TO_DOWNLOAD" value="70" literal="Ready to download ..."/>
+      <eLiterals name="DOWNLOADING" value="71" literal="Downloading ..."/>
+      <eLiterals name="DOWNLOAD_PIECE_FINISHED" value="72" literal="Piece downloaded"/>
+      <eLiterals name="DOWNLOAD_FINISHED" value="73" literal="Download finished"/>
+      <eLiterals name="DOWNLOAD_ERROR" value="74" literal="File transfer error"/>
+      <eLiterals name="READY_TO_UPLOAD" value="80" literal="Ready to upload"/>
+      <eLiterals name="UPLOADING" value="81" literal="Uploading ..."/>
+      <eLiterals name="UPLOAD_PICE_FINISHED" value="82" literal="Piece uploaded"/>
+      <eLiterals name="UPLOAD_ERROR" value="83" literal="Upload error"/>
+      <eLiterals name="READ_ERROR" value="90"/>
+      <eLiterals name="WRITE_ERROR" value="95"/>
+      <eLiterals name="STARTING_SWARM" value="100" literal="Starting swarm ..."/>
+      <eLiterals name="PAUSING_SWARM" value="101" literal="Pausing swarm ..."/>
+      <eLiterals name="STOPPING_SWARM" value="102" literal="Stopping swarm ..."/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="EClients">
+      <eLiterals name="AG" literal="Ares"/>
+      <eLiterals name="AR" value="2" literal="Arctic"/>
+      <eLiterals name="AT" value="3" literal="Artemis"/>
+      <eLiterals name="AX" value="4" literal="BitPump"/>
+      <eLiterals name="AZ" value="5" literal="Azureus"/>
+      <eLiterals name="BB" value="6" literal="BitBuddy"/>
+      <eLiterals name="BC" value="7" literal="BitComet"/>
+      <eLiterals name="BF" value="8" literal="Bitflu"/>
+      <eLiterals name="BG" value="9" literal="BTG"/>
+      <eLiterals name="BP" value="10" literal="BitTorrent Pro"/>
+      <eLiterals name="BR" value="11" literal="BitRocket"/>
+      <eLiterals name="BS" value="12" literal="BTSlave"/>
+      <eLiterals name="BW" value="13" literal="BitWombat"/>
+      <eLiterals name="BX" value="14" literal="Bittorrent X"/>
+      <eLiterals name="CD" value="15" literal="Enhanced CTorrent"/>
+      <eLiterals name="CT" value="16" literal="CTorrent"/>
+      <eLiterals name="DE" value="17" literal="DelugeTorrent"/>
+      <eLiterals name="DP" value="18" literal="Propagate Data Client"/>
+      <eLiterals name="EB" value="19" literal="EBit"/>
+      <eLiterals name="ES" value="20" literal="Electric Sheep"/>
+      <eLiterals name="FC" value="21" literal="FileCroc"/>
+      <eLiterals name="FT" value="22" literal="FoxTorrent"/>
+      <eLiterals name="GS" value="23" literal="GSTorrent"/>
+      <eLiterals name="HL" value="24" literal="Halite"/>
+      <eLiterals name="HN" value="25" literal="Hydranode"/>
+      <eLiterals name="KG" value="26" literal="KGet"/>
+      <eLiterals name="KT" value="27" literal="KTorrent"/>
+      <eLiterals name="LC" value="28" literal="LeechCraft"/>
+      <eLiterals name="LH" value="29" literal="LH-ABC"/>
+      <eLiterals name="LP" value="30" literal="Lphant"/>
+      <eLiterals name="LT" value="31" literal="Libtorrent"/>
+      <eLiterals name="MP" value="32" literal="MooPolice"/>
+      <eLiterals name="MT" value="33" literal="MoonlightTorrent"/>
+      <eLiterals name="QT" value="34" literal="QT 4 Torrent example"/>
+      <eLiterals name="RT" value="35" literal="Retriever"/>
+      <eLiterals name="SB" value="36" literal="Swiftbit"/>
+      <eLiterals name="SS" value="37" literal="SwarmScope"/>
+      <eLiterals name="SZ" value="38" literal="Shareaza"/>
+      <eLiterals name="TN" value="39" literal="TorrentDotNet"/>
+      <eLiterals name="TR" value="40" literal="Transmission"/>
+      <eLiterals name="TS" value="41" literal="TorrentStorm"/>
+      <eLiterals name="UT" value="42" literal="ÂµTorrent"/>
+      <eLiterals name="XT" value="43" literal="XanTorrent"/>
+      <eLiterals name="ZT" value="44" literal="ZipTorrent"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="EStrategy">
+      <eLiterals name="RANDOM" literal="Random"/>
+      <eLiterals name="SEQUENCE" value="1" literal="Sequence"/>
+      <eLiterals name="EXACT" value="2" literal="Exact"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="EAlgorithm">
+      <eLiterals name="QUEUENING" literal="Queuenning"/>
+      <eLiterals name="SUPERSEEDING" value="1" literal="Superseeding"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="EReturn">
+      <eLiterals name="EXIT" value="-1"/>
+      <eLiterals name="ERROR"/>
+      <eLiterals name="OK" value="1" literal="OK"/>
+    </eClassifiers>
+  </eSubpackages>
+</ecore:EPackage>

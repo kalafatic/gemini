@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/eu.kalafatic.gemini.bt.client.net.model/src"
+    modelPluginID="eu.kalafatic.gemini.bt.client.net.model" modelName="ClientNetwork"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0" copyrightFields="false">
+  <foreignModel>ClientNetwork.ecore</foreignModel>
+  <genPackages prefix="ClientNetwork" basePackage="eu.kalafatic.gemini.bt.client.net.model"
+      disposableProviderFactory="true" ecorePackage="ClientNetwork.ecore#/">
+    <genDataTypes ecoreDataType="ClientNetwork.ecore#//BoolArray"/>
+    <genDataTypes ecoreDataType="ClientNetwork.ecore#//ByteBuffer"/>
+    <genDataTypes ecoreDataType="ClientNetwork.ecore#//Channel"/>
+    <genDataTypes ecoreDataType="ClientNetwork.ecore#//Lock"/>
+    <genDataTypes ecoreDataType="ClientNetwork.ecore#//Set"/>
+    <genDataTypes ecoreDataType="ClientNetwork.ecore#//URL"/>
+    <genClasses ecoreClass="ClientNetwork.ecore#//ClientNetwork">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ClientNetwork.ecore#//ClientNetwork/swarmMap"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ClientNetwork.ecore#//ClientNetwork/semaphor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//ClientNetwork/activeSwarms"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//ClientNetwork/forceSwarmsKeys"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//ClientNetwork/sheduled"/>
+    </genClasses>
+    <genClasses ecoreClass="ClientNetwork.ecore#//Semaphor">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//Semaphor/connected"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//Semaphor/opened"/>
+    </genClasses>
+    <genClasses ecoreClass="ClientNetwork.ecore#//SwarmSession">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ClientNetwork.ecore#//SwarmSession/processedPieces"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ClientNetwork.ecore#//SwarmSession/uploadedPieces"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ClientNetwork.ecore#//SwarmSession/pieceBuffer"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ClientNetwork.ecore#//SwarmSession/speedContainer"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//SwarmSession/obtainingClients"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//SwarmSession/trackersManager"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//SwarmSession/searchersManager"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//SwarmSession/torrent"/>
+    </genClasses>
+    <genClasses ecoreClass="ClientNetwork.ecore#//Session">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//Session/announce"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//Session/channel"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//Session/state"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//Session/sheduled"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//Session/lastActivity"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//Session/rating"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//Session/timeout"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//Session/duration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//Session/clients"/>
+    </genClasses>
+    <genClasses ecoreClass="ClientNetwork.ecore#//SwarmInfo">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//SwarmInfo/dwnldStrategy"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//SwarmInfo/algorithm"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//SwarmInfo/createdOnDisc"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//SwarmInfo/uploadOnly"/>
+    </genClasses>
+    <genClasses ecoreClass="ClientNetwork.ecore#//SwarmContent">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ClientNetwork.ecore#//SwarmContent/trackers"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ClientNetwork.ecore#//SwarmContent/downloads"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ClientNetwork.ecore#//SwarmContent/uploads"/>
+    </genClasses>
+    <genClasses ecoreClass="ClientNetwork.ecore#//TrackerSession">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ClientNetwork.ecore#//TrackerSession/response"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//TrackerSession/nextConnection"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//TrackerSession/event"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//TrackerSession/scraped"/>
+    </genClasses>
+    <genClasses ecoreClass="ClientNetwork.ecore#//DwnldSession"/>
+    <genClasses ecoreClass="ClientNetwork.ecore#//UpldSession"/>
+    <genClasses ecoreClass="ClientNetwork.ecore#//ClientSession">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//ClientSession/reserved"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//ClientSession/canceledBlocks"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//ClientSession/receivedKeepAlive"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ClientNetwork.ecore#//ClientSession/speedContainer"/>
+    </genClasses>
+    <genClasses ecoreClass="ClientNetwork.ecore#//ClientInfo">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//ClientInfo/clientName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//ClientInfo/choking"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//ClientInfo/handshakeOK"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//ClientInfo/interested"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//ClientInfo/bitfield"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//ClientInfo/seed"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//ClientInfo/have"/>
+    </genClasses>
+    <genClasses ecoreClass="ClientNetwork.ecore#//TrackerResponse">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//TrackerResponse/failureReason"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//TrackerResponse/interval"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//TrackerResponse/minInterval"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//TrackerResponse/trackerId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//TrackerResponse/complete"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//TrackerResponse/incomplete"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//TrackerResponse/responseMessage"/>
+    </genClasses>
+    <genClasses ecoreClass="ClientNetwork.ecore#//IOPiece">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//IOPiece/pieceIndex"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//IOPiece/payload"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//IOPiece/finished"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//IOPiece/position"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//IOPiece/blocks"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//IOPiece/lockedBlocks"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//IOPiece/extTorrent"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//IOPiece/lastActivity"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//IOPiece/lock"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//IOPiece/color"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//IOPiece/hash"/>
+    </genClasses>
+    <genClasses ecoreClass="ClientNetwork.ecore#//WriteBuffer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//WriteBuffer/offset"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//WriteBuffer/size"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ClientNetwork.ecore#//WriteBuffer/pieces"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//WriteBuffer/sheduled"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//WriteBuffer/lock"/>
+    </genClasses>
+    <genClasses ecoreClass="ClientNetwork.ecore#//SpeedContainer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//SpeedContainer/startTime"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//SpeedContainer/dwnldSize"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//SpeedContainer/upldSize"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//SpeedContainer/speed"/>
+    </genClasses>
+    <genClasses ecoreClass="ClientNetwork.ecore#//StringToSessionMapEntry">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//StringToSessionMapEntry/key"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ClientNetwork.ecore#//StringToSessionMapEntry/value"/>
+    </genClasses>
+    <genClasses ecoreClass="ClientNetwork.ecore#//StringToClientSessionMapEntry">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//StringToClientSessionMapEntry/key"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ClientNetwork.ecore#//StringToClientSessionMapEntry/value"/>
+    </genClasses>
+    <genClasses ecoreClass="ClientNetwork.ecore#//IntToPieceEntry">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//IntToPieceEntry/key"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ClientNetwork.ecore#//IntToPieceEntry/value"/>
+    </genClasses>
+    <genClasses ecoreClass="ClientNetwork.ecore#//Behaviour">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//Behaviour/algorithm"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClientNetwork.ecore#//Behaviour/strategy"/>
+    </genClasses>
+    <nestedGenPackages prefix="NetworkConstants" basePackage="eu.kalafatic.gemini.bt.client.net.model.clientNetwork"
+        disposableProviderFactory="true" ecorePackage="ClientNetwork.ecore#//networkConstants">
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="ClientNetwork.ecore#//networkConstants/ETrackerResponseCode">
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/ETrackerResponseCode/INVALID_REQUEST_TYPE"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/ETrackerResponseCode/MISSING_INFO_HASH"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/ETrackerResponseCode/MISSING_PEER_ID"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/ETrackerResponseCode/MISSING_PORT"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/ETrackerResponseCode/INVALID_INFO_HASH"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/ETrackerResponseCode/INVALID_PEER_ID"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/ETrackerResponseCode/INVALID_NUMWANT"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/ETrackerResponseCode/INFO_HASH_NOT_FOUND"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/ETrackerResponseCode/FOUND"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/ETrackerResponseCode/BAD_REQUEST"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/ETrackerResponseCode/NOT_FOUND"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/ETrackerResponseCode/EVENTLESS_REQUEST"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/ETrackerResponseCode/GENERIC_ERROR"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="ClientNetwork.ecore#//networkConstants/ETrackerRequestProtocol">
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/ETrackerRequestProtocol/ANNOUNCE"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/ETrackerRequestProtocol/INFO_HASH"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/ETrackerRequestProtocol/PEER_ID"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/ETrackerRequestProtocol/PORT"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/ETrackerRequestProtocol/UPLOADED"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/ETrackerRequestProtocol/DOWNLOADED"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/ETrackerRequestProtocol/LEFT"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/ETrackerRequestProtocol/COMPACT"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/ETrackerRequestProtocol/NO_PEER_ID"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/ETrackerRequestProtocol/IP"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/ETrackerRequestProtocol/NUMWANT"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/ETrackerRequestProtocol/KEY"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/ETrackerRequestProtocol/TRACKER_ID"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/ETrackerRequestProtocol/EVENT"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="ClientNetwork.ecore#//networkConstants/ETrackerResponseProtocol">
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/ETrackerResponseProtocol/FAILURE_REASON"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/ETrackerResponseProtocol/WARNING_MESSAGE"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/ETrackerResponseProtocol/INTERVAL"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/ETrackerResponseProtocol/MIN_INTERVAL"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/ETrackerResponseProtocol/TRACKER_ID"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/ETrackerResponseProtocol/COMPLETE"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/ETrackerResponseProtocol/INCOMPLETE"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/ETrackerResponseProtocol/PEERS"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/ETrackerResponseProtocol/PEER_ID"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/ETrackerResponseProtocol/IP"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/ETrackerResponseProtocol/PORT"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="ClientNetwork.ecore#//networkConstants/EClientHandshakeProtocol">
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClientHandshakeProtocol/HANDSHAKE"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClientHandshakeProtocol/PROTOCOL_LEN"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClientHandshakeProtocol/PROTOCOL_NAME"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClientHandshakeProtocol/RESERVED"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClientHandshakeProtocol/INFO_HASH"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClientHandshakeProtocol/PEER_ID"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="ClientNetwork.ecore#//networkConstants/EClientTransportProtocol">
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClientTransportProtocol/CHOKE"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClientTransportProtocol/UNCHOKE"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClientTransportProtocol/INTERESTED"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClientTransportProtocol/NOT_INTERESTED"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClientTransportProtocol/HAVE"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClientTransportProtocol/BITFIELD"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClientTransportProtocol/REQUEST"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClientTransportProtocol/PIECE"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClientTransportProtocol/CANCEL"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClientTransportProtocol/DHT_PORT"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClientTransportProtocol/KEEP_ALIVE"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClientTransportProtocol/LT_EXT_MESSAGE"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClientTransportProtocol/HANDSHAKE"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="ClientNetwork.ecore#//networkConstants/ETrackerRequestEvent">
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/ETrackerRequestEvent/STARTED"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/ETrackerRequestEvent/STOPPED"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/ETrackerRequestEvent/COMPLETED"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="ClientNetwork.ecore#//networkConstants/EViewsMessages">
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EViewsMessages/READY"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EViewsMessages/ACTIVATED"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EViewsMessages/RUNNING"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EViewsMessages/PAUSED"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EViewsMessages/STOPPED"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EViewsMessages/WAITING"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EViewsMessages/SUSPENDED"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EViewsMessages/DISABLED"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EViewsMessages/REJECTED"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EViewsMessages/FINISHED"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EViewsMessages/READY_TO_TRACKER_HANDSHAKE"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EViewsMessages/CAN_NOT_CONNECT_TRACKER"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EViewsMessages/CONNECTING_TRACKERS"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EViewsMessages/TRACKERS_CONNECTED"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EViewsMessages/TRACKERS_FINISHED"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EViewsMessages/TRACKER_SENT_WARNING"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EViewsMessages/TRACKER_SENT_FAILURE"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EViewsMessages/SEARCH_FOR_CLIENTS"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EViewsMessages/SEARCH_FOR_CLIENTS_FINISHED"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EViewsMessages/CONNECTING_CLIENTS"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EViewsMessages/CAN_NOT_CONNECT_CLIENT"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EViewsMessages/CONNECTED_TO_CLIENTS"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EViewsMessages/CLIENT_CONNECTION_ERROR"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EViewsMessages/READY_TO_HANDSHAKE"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EViewsMessages/READY_TO_RECEIVE_HANDSHAKE"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EViewsMessages/READY_TO_SEND_HANDSHAKE"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EViewsMessages/CLIENT_HANDSHAKE_ERROR"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EViewsMessages/CLIENT_HANDSHAKE_OK"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EViewsMessages/CLIENT_IS_CHOKING"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EViewsMessages/CLIENT_NOT_INTERESTED"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EViewsMessages/RATIO_EXCEEDED_CHOKING"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EViewsMessages/READY_TO_INTERESTED"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EViewsMessages/PEER_IS_INTERESTED"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EViewsMessages/PEER_NOT_INTERESTED"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EViewsMessages/RATING_REJECTION"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EViewsMessages/READY_TO_DOWNLOAD"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EViewsMessages/DOWNLOADING"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EViewsMessages/DOWNLOAD_PIECE_FINISHED"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EViewsMessages/DOWNLOAD_FINISHED"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EViewsMessages/DOWNLOAD_ERROR"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EViewsMessages/READY_TO_UPLOAD"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EViewsMessages/UPLOADING"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EViewsMessages/UPLOAD_PICE_FINISHED"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EViewsMessages/UPLOAD_ERROR"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EViewsMessages/READ_ERROR"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EViewsMessages/WRITE_ERROR"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EViewsMessages/STARTING_SWARM"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EViewsMessages/PAUSING_SWARM"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EViewsMessages/STOPPING_SWARM"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="ClientNetwork.ecore#//networkConstants/EClients">
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClients/AG"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClients/AR"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClients/AT"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClients/AX"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClients/AZ"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClients/BB"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClients/BC"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClients/BF"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClients/BG"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClients/BP"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClients/BR"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClients/BS"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClients/BW"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClients/BX"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClients/CD"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClients/CT"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClients/DE"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClients/DP"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClients/EB"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClients/ES"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClients/FC"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClients/FT"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClients/GS"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClients/HL"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClients/HN"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClients/KG"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClients/KT"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClients/LC"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClients/LH"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClients/LP"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClients/LT"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClients/MP"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClients/MT"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClients/QT"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClients/RT"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClients/SB"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClients/SS"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClients/SZ"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClients/TN"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClients/TR"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClients/TS"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClients/UT"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClients/XT"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EClients/ZT"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="ClientNetwork.ecore#//networkConstants/EStrategy">
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EStrategy/RANDOM"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EStrategy/SEQUENCE"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="ClientNetwork.ecore#//networkConstants/EAlgorithm">
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EAlgorithm/QUEUENING"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EAlgorithm/SUPERSEEDING"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="ClientNetwork.ecore#//networkConstants/EReturn">
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EReturn/EXIT"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EReturn/ERROR"/>
+        <genEnumLiterals ecoreEnumLiteral="ClientNetwork.ecore#//networkConstants/EReturn/OK"/>
+      </genEnums>
+    </nestedGenPackages>
+  </genPackages>
+</genmodel:GenModel>

@@ -1,0 +1,873 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Assemble org.eclipse.pde.build.container.feature" default="main">
+	<property name="archiveName" value="org.eclipse.pde.build.container.feature-${buildId}-win32.win32.x86.zip"/>
+	<property name="os" value="win32"/>
+	<property name="ws" value="win32"/>
+	<property name="arch" value="x86"/>
+	<property name="jarProcessor.sign" value="false"/>
+	<property name="assemblyTempDir" value="${buildDirectory}/tmp"/>
+	<property name="eclipse.base" value="${assemblyTempDir}/${collectingFolder}"/>
+	<property name="eclipse.plugins" value="${eclipse.base}/plugins"/>
+	<property name="eclipse.features" value="${eclipse.base}/features"/>
+	<property name="archiveFullPath" value="${basedir}/${buildLabel}/${archiveName}"/>
+	<property name="equinoxLauncherJar" value="D:\Indigo-3.7.2\plugins\org.eclipse.equinox.launcher_1.2.0.v20110502.jar"/>
+	<property name="p2.build.repo" value="file:${buildDirectory}/buildRepo"/>
+	<property name="genericTargets" value="${eclipse.pdebuild.scripts}//genericTargets.xml"/>
+	<available property="customAssembly" file="${builder}/customAssembly.xml" value="${builder}/customAssembly.xml"/>
+	<property name="p2.product.qualifier" value="201304131526"/>
+	<property name="launcherName" value="Gemini"/>
+	<property name="tarargs" value=""/>
+
+	<macrodef name="customGather">
+		<attribute name="dir" />
+		<attribute name="propertyName" />
+		<attribute name="propertyValue" />
+		<attribute name="subFolder" />
+		<attribute name="projectName" />
+		<sequential>
+			<ant antfile="build.xml" dir="@{dir}" target="gather.bin.parts">
+				<property name="@{propertyName}" value="@{propertyValue}"/>
+			</ant>
+			<antcall target="customAssembly">
+				<param name="target.folder" value="@{propertyValue}@{subFolder}"/>
+				<param name="projectLocation" value="${basedir}/@{dir}"/>
+				<param name="@{propertyName}" value="@{propertyValue}"/>
+				<param name="customTarget" value="gather.bin.parts"/>
+				<param name="projectName" value="@{projectName}"/>
+			</antcall>
+		</sequential>
+	</macrodef>
+
+	<!-- Beginning of the jarUp task -->
+	<target name="jarUp" description="Create a jar from the given location.">
+		<available property="${source}/${elementName}_exists" file="${source}/${elementName}"/>
+		<available property="jaringManifest" file="${source}/${elementName}/META-INF/MANIFEST.MF"/>
+		<condition property="jaringTask" value="jarIng" else="jarIng_NoManifest"		>
+			<isset property="jaringManifest"/>
+		</condition>
+		<antcall target="${jaringTask}">
+			<param name="source" value="${source}"/>
+			<param name="elementName" value="${elementName}"/>
+		</antcall>
+	</target>
+
+	<target name="jarIng" if="${source}/${elementName}_exists">
+		<jar destfile="${source}/${elementName}.jar" basedir="${source}/${elementName}" manifest="${source}/${elementName}/META-INF/MANIFEST.MF" filesetmanifest="skip"/>
+		<delete dir="${source}/${elementName}"/>
+	</target>
+
+	<target name="jarIng_NoManifest" if="${source}/${elementName}_exists">
+		<jar destfile="${source}/${elementName}.jar" basedir="${source}/${elementName}" filesetmanifest="merge"/>
+		<delete dir="${source}/${elementName}"/>
+	</target>
+	<!-- End of the jarUp task -->
+
+	<!-- Beginning of the jar signing  target -->
+	<target name="jarSigning" description="Sign a jar.">
+		<antcall target="customAssembly">
+			<param name="customTarget" value="pre.jarSigning"/>
+		</antcall>
+		<eclipse.jarProcessor sign="${jarProcessor.sign}" pack="${jarProcessor.pack200}" unsign="${jarProcessor.unsign}" jar="${source}/${elementName}.jar" alias="${sign.alias}" keystore="${sign.keystore}" storepass="${sign.storepass}" keypass="${sign.keypass}"/>
+	</target>
+	<!-- End of the jarUp task -->
+
+	<target name="main">
+		<condition property="pluginArchivePrefix" value="plugins">
+			<equals arg1="${archivePrefix}"  arg2="" trim="true"/>
+		</condition>
+		<property name="pluginArchivePrefix" value="${archivePrefix}/plugins"/>
+
+		<condition property="featureArchivePrefix" value="features">
+			<equals arg1="${archivePrefix}"  arg2="" trim="true"/>
+		</condition>
+		<property name="featureArchivePrefix" value="${archivePrefix}/features"/>
+
+		<dirname property="archiveParentFolder" file="${archiveFullPath}"/>
+		<mkdir dir="${archiveParentFolder}"/>
+		<mkdir dir="${assemblyTempDir}"/>
+		<mkdir dir="${buildLabel}"/>
+
+		<antcall target="runDirector"/>
+		<antcall target="mirrorProduct"/>
+		<antcall target="assemble.archive"/>
+		<antcall target="cleanup.assembly"/>
+	</target>
+
+	<target name="gather.bin.parts">
+		<eclipse.publish.featuresAndBundles repository="file:D:\Projects\GEMINI\DP-070413\eu.kalafatic.gemini.builds/buildDirectory/buildRepo" site="${p2.category.site}" category="${p2.category.definition}" siteQualifier="${p2.category.prefix}" categoryVersion="${p2.category.version}">
+			<features dir="D:\Indigo-3.7.2\features\" includes="org.eclipse.equinox.p2.core.feature_1.0.1.v20110906-1605-8290FZ9FVKHVRKtmx3fpNuo02129"			/>
+			<features dir="D:\Indigo-3.7.2\features\" includes="org.eclipse.equinox.p2.rcp.feature_1.0.1.v20110906-1605-782EqBqNKGVkiV-PUsgz-uny4gqO"			/>
+			<features dir="D:\Indigo-3.7.2\features\" includes="org.eclipse.rcp_3.7.2.v20120120-1424-9DB5FmnFq5JCf1UA38R-kz0S0272"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.equinox.p2.artifact.repository_1.1.101.v20110815-1419.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.equinox.p2.console_1.0.300.v20110815-1419.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.equinox.p2.core_2.1.1.v20120113-1346.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.equinox.p2.director_2.1.1.v20111126-0211.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.equinox.p2.engine_2.1.1.R37x_v20111003.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.equinox.p2.garbagecollector_1.0.200.v20110815-1419.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.equinox.p2.metadata_2.1.0.v20110815-1419.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.equinox.p2.metadata.repository_1.2.0.v20110815-1419.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.equinox.p2.repository_2.1.1.v20120113-1346.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.equinox.p2.touchpoint.eclipse_2.1.1.v20110815-1419.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.equinox.p2.touchpoint.natives_1.0.300.v20110815-1419.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.equinox.simpleconfigurator.manipulator_2.0.0.v20110815-1438.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.sat4j.core_2.3.0.v20110329.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.sat4j.pb_2.3.0.v20110329.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.ecf_3.1.300.v20110531-2218.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.ecf.filetransfer_5.0.0.v20110531-2218.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.ecf.identity_3.1.100.v20110531-2218.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.ecf.provider.filetransfer_3.2.0.v20110531-2218.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.ecf.provider.filetransfer.httpclient_4.0.0.v20110531-2218.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.ecf.provider.filetransfer.httpclient.ssl_1.0.0.v20110531-2218.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.ecf.provider.filetransfer.ssl_1.0.0.v20110531-2218.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.ecf.ssl_1.0.100.v20110531-2218.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.apache.commons.codec_1.3.0.v201101211617.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.apache.commons.httpclient_3.1.0.v201012070820.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.apache.commons.logging_1.0.4.v201101211617.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.equinox.frameworkadmin_2.0.0.v20110815-1438.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.equinox.frameworkadmin.equinox_1.0.300.v20110815-1438.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.equinox.preferences_3.4.2.v20120111-2020.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.equinox.security_1.1.1.R37x_v20110822-1018.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.equinox.p2.jarprocessor_1.0.200.v20110815-1438.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.equinox.p2.ql_2.0.100.v20110815-1419.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.equinox.p2.transport.ecf_1.0.0.v20111128-0624.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.equinox.p2.operations_2.1.1.R37x_v20111111.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.equinox.security.win32.x86_1.0.200.v20100503.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.equinox.p2.ui_2.1.1.v20120113-1346.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.equinox.p2.ui.sdk.scheduler_1.0.100.v20110815-1419.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.equinox.p2.updatechecker_1.1.200.v20110815-1419.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.equinox.security.ui_1.1.0.v20101004.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.equinox.p2.ui.sdk_1.0.200.v20110815-1419.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="com.ibm.icu_4.4.2.v20110823.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.core.commands_3.6.0.I20110111-0800.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.core.databinding_1.4.0.I20110111-0800.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.core.databinding.observable_1.4.0.I20110222-0800.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.core.databinding.property_1.4.0.I20110222-0800.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.core.databinding.beans_1.2.100.I20100824-0800.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.core.jobs_3.5.101.v20120113-1953.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.core.expressions_3.4.300.v20110228.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.core.runtime_3.7.0.v20110110.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.core.runtime.compatibility.auth_3.2.200.v20110110.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.osgi_3.7.2.v20120110-1415.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.osgi.services_3.3.0.v20110513.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.help_3.5.100.v20110426.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.swt_3.7.2.v3740f.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.jface_3.7.0.v20110928-1505.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.jface.databinding_1.5.0.I20100907-0800.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.ui_3.7.0.v20110928-1505.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.ui.workbench_3.7.1.v20120104-1859.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.update.configurator_3.3.100.v20100512.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.equinox.simpleconfigurator_1.0.200.v20110815-1438.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.swt.win32.win32.x86_3.7.2.v3740f.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.rcp_3.7.2.v201202080800.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.core.contenttype_3.4.100.v20110423-0524.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.equinox.app_1.3.100.v20110321.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.equinox.common_3.6.0.v20110523.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.equinox.ds_1.3.1.R37x_v20110701.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.equinox.util_1.0.300.v20110502.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.equinox.registry_3.5.101.R37x_v20110810-1611.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.equinox.launcher_1.2.0.v20110502.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.equinox.launcher.win32.win32.x86_1.1.100.v20110502"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.ui.intro.universal_3.2.500.v20110510"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.emf.ecore.xmi_2.7.0.v20120127-1122.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.apache.lucene.analysis_2.9.1.v201101211721.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.emf.common_2.7.0.v20120127-1122.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.help.base_3.6.2.v201202080800.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.ui.forms_3.5.101.v20111011-1919.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.jface.text_3.7.2.v20111213-1208.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.ui.win32_3.2.200.v20110928-1505.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.apache.commons.logging_1.1.1.v201101211721.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.ui.intro_3.4.100.v20110425.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.emf.ecore_2.7.0.v20120127-1122.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.text_3.5.101.v20110928-1504.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.core.filebuffers_3.5.200.v20110928-1504.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.emf_2.6.0.v20120130-0943.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.apache.lucene_2.9.1.v201101211721.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.core.net.win32.x86_1.0.100.I20110331-0827.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.ui.workbench.texteditor_3.7.0.v20110928-1504.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.ui.editors_3.7.0.v20110928-1504.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.help.ui_3.5.101.r37_20110819.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.apache.ant_1.8.2.v20120109-1030"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.zest.core_1.3.0.201206112118.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.zest.layouts_1.1.0.201206112118.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.draw2d_3.8.0.201206112118.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.ui.ide_3.7.0.v20110928-1505.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.ui.views_3.6.0.v20110928-1505.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.apache.lucene.core_2.9.1.v201101211721.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.update.core_3.2.500.v20110330.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.update.ui_3.2.300.v20100512.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.core.filesystem_1.3.100.v20110423-0524.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.core.net_1.2.100.I20110511-0800.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.core.resources_3.7.101.v20120125-1505.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.compare.core_3.5.200.I20110208-0800.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="javax.servlet.jsp_2.0.0.v201101211617.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.apache.commons.el_1.0.0.v201101211617.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.apache.jasper_5.5.17.v201101211617.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.equinox.jsp.jasper_1.0.300.v20110502.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.equinox.jsp.jasper.registry_1.0.200.v20100503.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.team.cvs.ssh2_3.2.300.I20110511-0800.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="javax.servlet_2.5.0.v201103041518.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.jsch.core_1.1.300.I20110514-0800.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="com.jcraft.jsch_0.1.46.v201205102330.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.team.core_3.6.0.I20110525-0800.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.team.cvs.core_3.3.400.I20110510-0800.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.equinox.http.registry_1.1.100.v20110502.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.equinox.p2.publisher_1.2.0.v20110815-1419.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.ui.views.properties.tabbed_3.5.200.v20110928-1505.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.ui.net_1.2.100.v20111208-1155.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.xsd_2.7.1.v20120130-0943.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.emf.edit_2.7.2.v20120130-0943.jar"			/>
+			<bundles dir="D:\Indigo-3.7.2\plugins" includes="org.eclipse.emf.edit.ui_2.7.0.v20120130-0943.jar"			/>
+		</eclipse.publish.featuresAndBundles>
+	</target>
+
+	<target name="jar.processing">
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.equinox.p2.artifact.repository_1.1.101.v20110815-1419"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.equinox.p2.console_1.0.300.v20110815-1419"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.equinox.p2.core_2.1.1.v20120113-1346"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.equinox.p2.director_2.1.1.v20111126-0211"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.equinox.p2.engine_2.1.1.R37x_v20111003"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.equinox.p2.garbagecollector_1.0.200.v20110815-1419"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.equinox.p2.metadata_2.1.0.v20110815-1419"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.equinox.p2.metadata.repository_1.2.0.v20110815-1419"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.equinox.p2.repository_2.1.1.v20120113-1346"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.equinox.p2.touchpoint.eclipse_2.1.1.v20110815-1419"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.equinox.p2.touchpoint.natives_1.0.300.v20110815-1419"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.equinox.simpleconfigurator.manipulator_2.0.0.v20110815-1438"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.sat4j.core_2.3.0.v20110329"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.sat4j.pb_2.3.0.v20110329"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.ecf_3.1.300.v20110531-2218"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.ecf.filetransfer_5.0.0.v20110531-2218"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.ecf.identity_3.1.100.v20110531-2218"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.ecf.provider.filetransfer_3.2.0.v20110531-2218"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.ecf.provider.filetransfer.httpclient_4.0.0.v20110531-2218"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.ecf.provider.filetransfer.httpclient.ssl_1.0.0.v20110531-2218"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.ecf.provider.filetransfer.ssl_1.0.0.v20110531-2218"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.ecf.ssl_1.0.100.v20110531-2218"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.apache.commons.codec_1.3.0.v201101211617"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.apache.commons.httpclient_3.1.0.v201012070820"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.apache.commons.logging_1.0.4.v201101211617"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.equinox.frameworkadmin_2.0.0.v20110815-1438"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.equinox.frameworkadmin.equinox_1.0.300.v20110815-1438"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.equinox.preferences_3.4.2.v20120111-2020"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.equinox.security_1.1.1.R37x_v20110822-1018"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.equinox.p2.jarprocessor_1.0.200.v20110815-1438"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.equinox.p2.ql_2.0.100.v20110815-1419"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.equinox.p2.transport.ecf_1.0.0.v20111128-0624"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.equinox.p2.operations_2.1.1.R37x_v20111111"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.equinox.security.win32.x86_1.0.200.v20100503"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.equinox.p2.ui_2.1.1.v20120113-1346"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.equinox.p2.ui.sdk.scheduler_1.0.100.v20110815-1419"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.equinox.p2.updatechecker_1.1.200.v20110815-1419"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.equinox.security.ui_1.1.0.v20101004"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.equinox.p2.ui.sdk_1.0.200.v20110815-1419"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="com.ibm.icu_4.4.2.v20110823"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.core.commands_3.6.0.I20110111-0800"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.core.databinding_1.4.0.I20110111-0800"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.core.databinding.observable_1.4.0.I20110222-0800"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.core.databinding.property_1.4.0.I20110222-0800"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.core.databinding.beans_1.2.100.I20100824-0800"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.core.jobs_3.5.101.v20120113-1953"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.core.expressions_3.4.300.v20110228"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.core.runtime_3.7.0.v20110110"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.core.runtime.compatibility.auth_3.2.200.v20110110"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.osgi_3.7.2.v20120110-1415"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.osgi.services_3.3.0.v20110513"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.help_3.5.100.v20110426"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.swt_3.7.2.v3740f"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.jface_3.7.0.v20110928-1505"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.jface.databinding_1.5.0.I20100907-0800"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.ui_3.7.0.v20110928-1505"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.ui.workbench_3.7.1.v20120104-1859"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.update.configurator_3.3.100.v20100512"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.equinox.simpleconfigurator_1.0.200.v20110815-1438"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.swt.win32.win32.x86_3.7.2.v3740f"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.rcp_3.7.2.v201202080800"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.core.contenttype_3.4.100.v20110423-0524"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.equinox.app_1.3.100.v20110321"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.equinox.common_3.6.0.v20110523"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.equinox.ds_1.3.1.R37x_v20110701"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.equinox.util_1.0.300.v20110502"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.equinox.registry_3.5.101.R37x_v20110810-1611"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.equinox.launcher_1.2.0.v20110502"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.emf.ecore.xmi_2.7.0.v20120127-1122"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.apache.lucene.analysis_2.9.1.v201101211721"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.emf.common_2.7.0.v20120127-1122"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.help.base_3.6.2.v201202080800"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.ui.forms_3.5.101.v20111011-1919"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.jface.text_3.7.2.v20111213-1208"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.ui.win32_3.2.200.v20110928-1505"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.apache.commons.logging_1.1.1.v201101211721"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.ui.intro_3.4.100.v20110425"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.emf.ecore_2.7.0.v20120127-1122"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.text_3.5.101.v20110928-1504"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.core.filebuffers_3.5.200.v20110928-1504"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.emf_2.6.0.v20120130-0943"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.apache.lucene_2.9.1.v201101211721"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.core.net.win32.x86_1.0.100.I20110331-0827"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.ui.workbench.texteditor_3.7.0.v20110928-1504"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.ui.editors_3.7.0.v20110928-1504"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.help.ui_3.5.101.r37_20110819"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.zest.core_1.3.0.201206112118"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.zest.layouts_1.1.0.201206112118"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.draw2d_3.8.0.201206112118"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.ui.ide_3.7.0.v20110928-1505"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.ui.views_3.6.0.v20110928-1505"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.apache.lucene.core_2.9.1.v201101211721"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.update.core_3.2.500.v20110330"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.update.ui_3.2.300.v20100512"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.core.filesystem_1.3.100.v20110423-0524"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.core.net_1.2.100.I20110511-0800"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.core.resources_3.7.101.v20120125-1505"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.compare.core_3.5.200.I20110208-0800"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="javax.servlet.jsp_2.0.0.v201101211617"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.apache.commons.el_1.0.0.v201101211617"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.apache.jasper_5.5.17.v201101211617"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.equinox.jsp.jasper_1.0.300.v20110502"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.equinox.jsp.jasper.registry_1.0.200.v20100503"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.team.cvs.ssh2_3.2.300.I20110511-0800"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="javax.servlet_2.5.0.v201103041518"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.jsch.core_1.1.300.I20110514-0800"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="com.jcraft.jsch_0.1.46.v201205102330"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.team.core_3.6.0.I20110525-0800"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.team.cvs.core_3.3.400.I20110510-0800"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.equinox.http.registry_1.1.100.v20110502"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.equinox.p2.publisher_1.2.0.v20110815-1419"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.ui.views.properties.tabbed_3.5.200.v20110928-1505"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.ui.net_1.2.100.v20111208-1155"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.xsd_2.7.1.v20120130-0943"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.emf.edit_2.7.2.v20120130-0943"/>
+		</antcall>
+		<antcall target="jarUp">
+			<param name="source" value="${eclipse.plugins}"/>
+			<param name="elementName" value="org.eclipse.emf.edit.ui_2.7.0.v20120130-0943"/>
+		</antcall>
+		<antcall target="customAssembly">
+			<param name="customTarget" value="post.jarUp"/>
+		</antcall>
+	</target>
+
+	<target name="assemble.archive" unless="skipDirector">
+		<antcall target="customAssembly">
+			<param name="rootFolder" value="${eclipse.base}/win32.win32.x86/${collectingFolder}"/>
+			<param name="customTarget" value="pre.archive"/>
+		</antcall>
+		<zip destfile="${archiveFullPath}" filesonly="false" whenempty="skip" update="true">
+			<zipfileset dir="${eclipse.base}" includes="**/**" excludes="${launcherName}" prefix="${archivePrefix}"			/>
+			<zipfileset file="${eclipse.base}/${launcherName}" fullpath="${archivePrefix}/${launcherName}" filemode="755"			/>
+		</zip>
+	</target>
+
+	<target name="cleanup.assembly">
+		<delete dir="${assemblyTempDir}"/>
+	</target>
+
+	<target name="customAssembly" if="customAssembly">
+		<ant antfile="${customAssembly}" target="${customTarget}" inheritAll="true"/>
+	</target>
+
+	<target name="generate.p2.metadata" if="generate.p2.metadata">
+		<property name="p2.append" value="true"/>
+		<property name="p2.compress" value="false"/>
+		<property name="p2.metadata.repo.name" value=""/>
+		<property name="p2.artifact.repo.name" value=""/>
+	</target>
+
+	<target name="runDirector" unless="skipDirector">
+		<ant antfile="${genericTargets}" target="runDirector" inheritAll="true">
+			<property name="p2.director.installPath" value="${eclipse.base}"/>
+			<property name="os" value="${os}"/>
+			<property name="p2.director.version" value="2.1.3.${p2.product.qualifier}"/>
+			<property name="arch" value="${arch}"/>
+			<property name="p2.director.iu" value="core"/>
+			<property name="ws" value="${ws}"/>
+			<property name="p2.repo" value="${p2.build.repo}"/>
+		</ant>
+
+	</target>
+
+	<target name="mirrorArchive" unless="skipMirroring">
+		<property name="p2.append" value="true"/>
+		<property name="p2.mirror.metadata.destination" value="file:${eclipse.base}"/>
+		<property name="p2.mirror.artifact.destination" value="file:${eclipse.base}"/>
+		<p2.mirror  source="${p2.build.repo}"		>
+			<destination  location="${p2.mirror.metadata.destination}" name="${p2.metadata.repo.name}" compressed="${p2.compress}" append="true" kind="metadata"		/>
+			<destination  location="${p2.mirror.artifact.destination}" name="${p2.artifact.repo.name}" compressed="${p2.compress}" append="true" kind="artifact"		/>
+					<iu  id="org.eclipse.equinox.p2.artifact.repository" version="1.1.101.v20110815-1419"		/>
+			<iu  id="org.eclipse.equinox.p2.console" version="1.0.300.v20110815-1419"		/>
+			<iu  id="org.eclipse.equinox.p2.core" version="2.1.1.v20120113-1346"		/>
+			<iu  id="org.eclipse.equinox.p2.director" version="2.1.1.v20111126-0211"		/>
+			<iu  id="org.eclipse.equinox.p2.engine" version="2.1.1.R37x_v20111003"		/>
+			<iu  id="org.eclipse.equinox.p2.garbagecollector" version="1.0.200.v20110815-1419"		/>
+			<iu  id="org.eclipse.equinox.p2.metadata" version="2.1.0.v20110815-1419"		/>
+			<iu  id="org.eclipse.equinox.p2.metadata.repository" version="1.2.0.v20110815-1419"		/>
+			<iu  id="org.eclipse.equinox.p2.repository" version="2.1.1.v20120113-1346"		/>
+			<iu  id="org.eclipse.equinox.p2.touchpoint.eclipse" version="2.1.1.v20110815-1419"		/>
+			<iu  id="org.eclipse.equinox.p2.touchpoint.natives" version="1.0.300.v20110815-1419"		/>
+			<iu  id="org.eclipse.equinox.simpleconfigurator.manipulator" version="2.0.0.v20110815-1438"		/>
+			<iu  id="org.sat4j.core" version="2.3.0.v20110329"		/>
+			<iu  id="org.sat4j.pb" version="2.3.0.v20110329"		/>
+			<iu  id="org.eclipse.ecf" version="3.1.300.v20110531-2218"		/>
+			<iu  id="org.eclipse.ecf.filetransfer" version="5.0.0.v20110531-2218"		/>
+			<iu  id="org.eclipse.ecf.identity" version="3.1.100.v20110531-2218"		/>
+			<iu  id="org.eclipse.ecf.provider.filetransfer" version="3.2.0.v20110531-2218"		/>
+			<iu  id="org.eclipse.ecf.provider.filetransfer.httpclient" version="4.0.0.v20110531-2218"		/>
+			<iu  id="org.eclipse.ecf.provider.filetransfer.httpclient.ssl" version="1.0.0.v20110531-2218"		/>
+			<iu  id="org.eclipse.ecf.provider.filetransfer.ssl" version="1.0.0.v20110531-2218"		/>
+			<iu  id="org.eclipse.ecf.ssl" version="1.0.100.v20110531-2218"		/>
+			<iu  id="org.apache.commons.codec" version="1.3.0.v201101211617"		/>
+			<iu  id="org.apache.commons.httpclient" version="3.1.0.v201012070820"		/>
+			<iu  id="org.apache.commons.logging" version="1.0.4.v201101211617"		/>
+			<iu  id="org.eclipse.equinox.frameworkadmin" version="2.0.0.v20110815-1438"		/>
+			<iu  id="org.eclipse.equinox.frameworkadmin.equinox" version="1.0.300.v20110815-1438"		/>
+			<iu  id="org.eclipse.equinox.preferences" version="3.4.2.v20120111-2020"		/>
+			<iu  id="org.eclipse.equinox.security" version="1.1.1.R37x_v20110822-1018"		/>
+			<iu  id="org.eclipse.equinox.p2.jarprocessor" version="1.0.200.v20110815-1438"		/>
+			<iu  id="org.eclipse.equinox.p2.ql" version="2.0.100.v20110815-1419"		/>
+			<iu  id="org.eclipse.equinox.p2.transport.ecf" version="1.0.0.v20111128-0624"		/>
+			<iu  id="org.eclipse.equinox.p2.operations" version="2.1.1.R37x_v20111111"		/>
+			<iu  id="org.eclipse.equinox.security.win32.x86" version="1.0.200.v20100503"		/>
+			<iu  id="org.eclipse.equinox.p2.ui" version="2.1.1.v20120113-1346"		/>
+			<iu  id="org.eclipse.equinox.p2.ui.sdk.scheduler" version="1.0.100.v20110815-1419"		/>
+			<iu  id="org.eclipse.equinox.p2.updatechecker" version="1.1.200.v20110815-1419"		/>
+			<iu  id="org.eclipse.equinox.security.ui" version="1.1.0.v20101004"		/>
+			<iu  id="org.eclipse.equinox.p2.ui.sdk" version="1.0.200.v20110815-1419"		/>
+			<iu  id="com.ibm.icu" version="4.4.2.v20110823"		/>
+			<iu  id="org.eclipse.core.commands" version="3.6.0.I20110111-0800"		/>
+			<iu  id="org.eclipse.core.databinding" version="1.4.0.I20110111-0800"		/>
+			<iu  id="org.eclipse.core.databinding.observable" version="1.4.0.I20110222-0800"		/>
+			<iu  id="org.eclipse.core.databinding.property" version="1.4.0.I20110222-0800"		/>
+			<iu  id="org.eclipse.core.databinding.beans" version="1.2.100.I20100824-0800"		/>
+			<iu  id="org.eclipse.core.jobs" version="3.5.101.v20120113-1953"		/>
+			<iu  id="org.eclipse.core.expressions" version="3.4.300.v20110228"		/>
+			<iu  id="org.eclipse.core.runtime" version="3.7.0.v20110110"		/>
+			<iu  id="org.eclipse.core.runtime.compatibility.auth" version="3.2.200.v20110110"		/>
+			<iu  id="org.eclipse.osgi" version="3.7.2.v20120110-1415"		/>
+			<iu  id="org.eclipse.osgi.services" version="3.3.0.v20110513"		/>
+			<iu  id="org.eclipse.help" version="3.5.100.v20110426"		/>
+			<iu  id="org.eclipse.swt" version="3.7.2.v3740f"		/>
+			<iu  id="org.eclipse.jface" version="3.7.0.v20110928-1505"		/>
+			<iu  id="org.eclipse.jface.databinding" version="1.5.0.I20100907-0800"		/>
+			<iu  id="org.eclipse.ui" version="3.7.0.v20110928-1505"		/>
+			<iu  id="org.eclipse.ui.workbench" version="3.7.1.v20120104-1859"		/>
+			<iu  id="org.eclipse.update.configurator" version="3.3.100.v20100512"		/>
+			<iu  id="org.eclipse.equinox.simpleconfigurator" version="1.0.200.v20110815-1438"		/>
+			<iu  id="org.eclipse.swt.win32.win32.x86" version="3.7.2.v3740f"		/>
+			<iu  id="org.eclipse.rcp" version="3.7.2.v201202080800"		/>
+			<iu  id="org.eclipse.core.contenttype" version="3.4.100.v20110423-0524"		/>
+			<iu  id="org.eclipse.equinox.app" version="1.3.100.v20110321"		/>
+			<iu  id="org.eclipse.equinox.common" version="3.6.0.v20110523"		/>
+			<iu  id="org.eclipse.equinox.ds" version="1.3.1.R37x_v20110701"		/>
+			<iu  id="org.eclipse.equinox.util" version="1.0.300.v20110502"		/>
+			<iu  id="org.eclipse.equinox.registry" version="3.5.101.R37x_v20110810-1611"		/>
+			<iu  id="org.eclipse.equinox.launcher" version="1.2.0.v20110502"		/>
+			<iu  id="org.eclipse.equinox.launcher.win32.win32.x86" version="1.1.100.v20110502"		/>
+			<iu  id="org.eclipse.ui.intro.universal" version="3.2.500.v20110510"		/>
+			<iu  id="org.eclipse.emf.ecore.xmi" version="2.7.0.v20120127-1122"		/>
+			<iu  id="org.apache.lucene.analysis" version="2.9.1.v201101211721"		/>
+			<iu  id="org.eclipse.emf.common" version="2.7.0.v20120127-1122"		/>
+			<iu  id="org.eclipse.help.base" version="3.6.2.v201202080800"		/>
+			<iu  id="org.eclipse.ui.forms" version="3.5.101.v20111011-1919"		/>
+			<iu  id="org.eclipse.jface.text" version="3.7.2.v20111213-1208"		/>
+			<iu  id="org.eclipse.ui.win32" version="3.2.200.v20110928-1505"		/>
+			<iu  id="org.apache.commons.logging" version="1.1.1.v201101211721"		/>
+			<iu  id="org.eclipse.ui.intro" version="3.4.100.v20110425"		/>
+			<iu  id="org.eclipse.emf.ecore" version="2.7.0.v20120127-1122"		/>
+			<iu  id="org.eclipse.text" version="3.5.101.v20110928-1504"		/>
+			<iu  id="org.eclipse.core.filebuffers" version="3.5.200.v20110928-1504"		/>
+			<iu  id="org.eclipse.emf" version="2.6.0.v20120130-0943"		/>
+			<iu  id="org.apache.lucene" version="2.9.1.v201101211721"		/>
+			<iu  id="org.eclipse.core.net.win32.x86" version="1.0.100.I20110331-0827"		/>
+			<iu  id="org.eclipse.ui.workbench.texteditor" version="3.7.0.v20110928-1504"		/>
+			<iu  id="org.eclipse.ui.editors" version="3.7.0.v20110928-1504"		/>
+			<iu  id="org.eclipse.help.ui" version="3.5.101.r37_20110819"		/>
+			<iu  id="org.apache.ant" version="1.8.2.v20120109-1030"		/>
+			<iu  id="org.eclipse.zest.core" version="1.3.0.201206112118"		/>
+			<iu  id="org.eclipse.zest.layouts" version="1.1.0.201206112118"		/>
+			<iu  id="org.eclipse.draw2d" version="3.8.0.201206112118"		/>
+			<iu  id="org.eclipse.ui.ide" version="3.7.0.v20110928-1505"		/>
+			<iu  id="org.eclipse.ui.views" version="3.6.0.v20110928-1505"		/>
+			<iu  id="org.apache.lucene.core" version="2.9.1.v201101211721"		/>
+			<iu  id="org.eclipse.update.core" version="3.2.500.v20110330"		/>
+			<iu  id="org.eclipse.update.ui" version="3.2.300.v20100512"		/>
+			<iu  id="org.eclipse.core.filesystem" version="1.3.100.v20110423-0524"		/>
+			<iu  id="org.eclipse.core.net" version="1.2.100.I20110511-0800"		/>
+			<iu  id="org.eclipse.core.resources" version="3.7.101.v20120125-1505"		/>
+			<iu  id="org.eclipse.compare.core" version="3.5.200.I20110208-0800"		/>
+			<iu  id="javax.servlet.jsp" version="2.0.0.v201101211617"		/>
+			<iu  id="org.apache.commons.el" version="1.0.0.v201101211617"		/>
+			<iu  id="org.apache.jasper" version="5.5.17.v201101211617"		/>
+			<iu  id="org.eclipse.equinox.jsp.jasper" version="1.0.300.v20110502"		/>
+			<iu  id="org.eclipse.equinox.jsp.jasper.registry" version="1.0.200.v20100503"		/>
+			<iu  id="org.eclipse.team.cvs.ssh2" version="3.2.300.I20110511-0800"		/>
+			<iu  id="javax.servlet" version="2.5.0.v201103041518"		/>
+			<iu  id="org.eclipse.jsch.core" version="1.1.300.I20110514-0800"		/>
+			<iu  id="com.jcraft.jsch" version="0.1.46.v201205102330"		/>
+			<iu  id="org.eclipse.team.core" version="3.6.0.I20110525-0800"		/>
+			<iu  id="org.eclipse.team.cvs.core" version="3.3.400.I20110510-0800"		/>
+			<iu  id="org.eclipse.equinox.http.registry" version="1.1.100.v20110502"		/>
+			<iu  id="org.eclipse.equinox.p2.publisher" version="1.2.0.v20110815-1419"		/>
+			<iu  id="org.eclipse.ui.views.properties.tabbed" version="3.5.200.v20110928-1505"		/>
+			<iu  id="org.eclipse.ui.net" version="1.2.100.v20111208-1155"		/>
+			<iu  id="org.eclipse.xsd" version="2.7.1.v20120130-0943"		/>
+			<iu  id="org.eclipse.emf.edit" version="2.7.2.v20120130-0943"		/>
+			<iu  id="org.eclipse.emf.edit.ui" version="2.7.0.v20120130-0943"		/>
+			<iu id="org.eclipse.equinox.p2.core.feature.feature.group" version="1.0.1.v20110906-1605-8290FZ9FVKHVRKtmx3fpNuo02129"		/>
+			<iu id="org.eclipse.equinox.p2.rcp.feature.feature.group" version="1.0.1.v20110906-1605-782EqBqNKGVkiV-PUsgz-uny4gqO"		/>
+			<iu id="org.eclipse.rcp.feature.group" version="3.7.2.v20120120-1424-9DB5FmnFq5JCf1UA38R-kz0S0272"		/>
+			<iu id="core" version="2.1.3.${p2.product.qualifier}"		/>
+				<iu query="property[@name='org.eclipse.equinox.p2.type.category']" required="false" />
+		</p2.mirror>
+	</target>
+
+	<target name="mirrorProduct" if="p2.metadata.repo" unless="skipMirroring">
+		<antcall target="mirrorArchive">
+			<param name="p2.mirror.artifact.destination" value="${p2.artifact.repo}"/>
+			<param name="p2.mirror.metadata.destination" value="${p2.metadata.repo}"/>
+		</antcall>
+	</target>
+
+</project>

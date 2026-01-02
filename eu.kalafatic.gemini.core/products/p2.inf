@@ -1,0 +1,3 @@
+instructions.configure=\
+  addRepository(type:0,location:http${#58}//kalafatic.eu:6885/Projects/Gemini/Update);\
+  addRepository(type:1,location:http${#58}//kalafatic.eu:6885/Projects/Gemini/Update);

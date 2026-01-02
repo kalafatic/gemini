@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="rc"
+    nsURI="http:///rc.ecore" nsPrefix="rc">
+  <eClassifiers xsi:type="ecore:EClass" name="RC">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sessionMap" upperBound="-1"
+        eType="#//StringToSessionMapEntry" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tree" upperBound="-1" eType="#//StringToFolderMapEntry"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RCSession">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="state" eType="#//ERCSessionState"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="torrents" eType="#//ERCCMD"
+        defaultValueLiteral="SEL_ALL"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="httpExchange" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"
+        transient="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StringToSessionMapEntry" instanceClassName="java.util.Map$Entry">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//RCSession"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ERCSessionState">
+    <eLiterals name="NEW"/>
+    <eLiterals name="LOGIN" value="1"/>
+    <eLiterals name="LOGED" value="2"/>
+    <eLiterals name="CERTIFIED" value="3"/>
+    <eLiterals name="LOGOUT" value="4"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="RCProtocol"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="ERCCMD">
+    <eLiterals name="APP_RESTART"/>
+    <eLiterals name="RC_LOGOUT" value="1"/>
+    <eLiterals name="SEL_ALL" value="2"/>
+    <eLiterals name="SEL_UNF" value="3"/>
+    <eLiterals name="SEL_FIN" value="4"/>
+    <eLiterals name="T_START" value="5"/>
+    <eLiterals name="T_STOP" value="6"/>
+    <eLiterals name="T_ADD" value="7"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StringToFolderMapEntry" instanceClassName="java.util.Map$Entry">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//Folder"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StringToPageMapEntry" instanceClassName="java.util.Map$Entry">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//Page"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Folder" eSuperTypes="#//Page">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="folders" upperBound="-1"
+        eType="#//StringToFolderMapEntry" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pages" upperBound="-1"
+        eType="#//StringToPageMapEntry" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Page">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="address" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parent" lowerBound="1"
+        eType="#//Folder"/>
+  </eClassifiers>
+</ecore:EPackage>

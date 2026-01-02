@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %Bundle-Name
+Bundle-SymbolicName: eu.kalafatic.gemini.bt.utils;singleton:=true
+Bundle-Version: 3.0.0.qualifier
+Bundle-Activator: eu.kalafatic.gemini.bt.utils.Activator
+Require-Bundle: eu.kalafatic.gemini.core;bundle-version="2.0.6";visibility:=reexport,
+ eu.kalafatic.gemini.bt.client.model;bundle-version="2.0.7";visibility:=reexport
+Bundle-ActivationPolicy: lazy
+Export-Package: eu.kalafatic.gemini.bt.utils,
+ eu.kalafatic.gemini.bt.utils.decoders,
+ eu.kalafatic.gemini.bt.utils.dialogs,
+ eu.kalafatic.gemini.bt.utils.handlers,
+ eu.kalafatic.gemini.bt.utils.utils,
+ eu.kalafatic.gemini.bt.utils.wizards,
+ eu.kalafatic.gemini.bt.utils.wizards.pages
+Bundle-RequiredExecutionEnvironment: JavaSE-15

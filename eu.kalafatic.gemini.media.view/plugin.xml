@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="eu.kalafatic.gemini.media.view.perspectives.MediaBasePerspective"
+            icon="icons/media.png"
+            id="eu.kalafatic.gemini.media.view.MediaBasePerspective"
+            name="%perspective.name.0">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            id="Media"
+            name="%category.name"
+            parentCategory="Gemini">
+      </category>
+      <view
+            category="Gemini/Media"
+            class="eu.kalafatic.gemini.media.view.views.VideoPlayerView"
+            icon="icons/play.png"
+            id="eu.kalafatic.gemini.media.view.views.VideoPlayerView"
+            name="%view.name.0"
+            restorable="true">
+      </view>
+   </extension>
+
+</plugin>

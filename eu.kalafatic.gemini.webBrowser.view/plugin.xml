@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="eu.kalafatic.gemini.webbrowser.view.editors.MultiPageEditor"
+            contributorClass="eu.kalafatic.gemini.webbrowser.view.editors.MultiPageEditorContributor"
+            extensions="html, htm"
+            icon="icons/tray-icon16-16.jpg"
+            id="gemini.webbrowser.view.editors.MultiPageEditor"
+            name="%editor.name.0">
+      </editor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="eu.kalafatic.gemini.webbrowser.view.perspectives.WebBrowserPerspective"
+            icon="platform:/plugin/eu.kalafatic.gemini.core/icons/network/web.gif"
+            id="eu.kalafatic.gemini.webbrowser.view.perspectives.WebBrowserPerspective"
+            name="%perspective.name.0">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            id="Web"
+            name="%category.name"
+            parentCategory="Gemini">
+      </category>
+      <view
+            category="Gemini/Web"
+            class="eu.kalafatic.gemini.webbrowser.view.views.WebBrowserNavigator"
+            icon="platform:/plugin/eu.kalafatic.gemini.core/icons/tree.gif"
+            id="eu.kalafatic.gemini.webbrowser.view.views.WebBrowserNavigator"
+            name="%view.name.2"
+            restorable="true">
+      </view>
+      <view
+            category="Gemini/Web"
+            class="eu.kalafatic.gemini.webbrowser.view.views.WebBrowserView"
+            icon="platform:/plugin/eu.kalafatic.gemini.core/icons/network/browser.jpg"
+            id="eu.kalafatic.gemini.webbrowser.view.views.WebBrowserView"
+            name="%view.name.1"
+            restorable="true">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="eu.kalafatic.gemini.webbrowser.controller.PreferenceInitializer">
+      </initializer>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            category="eu.kalafatic.gemini.core.preferences.GeminiPreferencePage"
+            class="eu.kalafatic.gemini.webbrowser.view.preferences.WebPreferencePage"
+            id="eu.kalafatic.gemini.webbrowser.view.preferences.WebPreferencePage"
+            name="%page.name.0">
+      </page>
+      <page
+            category="eu.kalafatic.gemini.webbrowser.view.preferences.WebPreferencePage"
+            class="eu.kalafatic.gemini.webbrowser.view.preferences.NetworkPreferencePage"
+            id="eu.kalafatic.gemini.webbrowser.view.preferences.NetworkPreferencePage"
+            name="%page.name.1">
+      </page>
+      
+   </extension>
+
+</plugin>

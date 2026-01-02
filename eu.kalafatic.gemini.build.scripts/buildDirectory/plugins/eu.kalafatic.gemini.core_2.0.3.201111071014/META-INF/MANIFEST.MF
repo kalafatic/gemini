@@ -1,0 +1,85 @@
+Manifest-Version: 1.0
+Export-Package: actions,branding,eu.kalafatic.gemini.core; uses:="eu.k
+ alafatic.gemini.core.lib.constants,  org.eclipse.jface.resource,  org
+ .osgi.service.prefs,  org.eclipse.equinox.app,  org.eclipse.ui.plugin
+ ,  org.osgi.framework,  org.eclipse.core.runtime.preferences",eu.kala
+ fatic.gemini.core.actions;uses:="org.eclipse.jface.action,org.eclipse
+ .jface.viewers",eu.kalafatic.gemini.core.application; uses:="org.ecli
+ pse.jface.action,  eu.kalafatic.gemini.core.lib.constants,  org.eclip
+ se.ui.application,  org.eclipse.ui,  eu.kalafatic.gemini.core.dialogs
+ ,  eu.kalafatic.gemini.core.interfaces,  org.eclipse.swt.widgets",eu.
+ kalafatic.gemini.core.dialogs; uses:="org.eclipse.core.runtime,  org.
+ eclipse.ui,  org.eclipse.swt.events,  org.eclipse.ui.splash,  eu.kala
+ fatic.gemini.core.lib.constants,  org.eclipse.jface.viewers,  org.ecl
+ ipse.swt.graphics,  eu.kalafatic.gemini.core.hack,  org.eclipse.swt.w
+ idgets,  org.eclipse.jface.dialogs",eu.kalafatic.gemini.core.editors;
+  uses:="org.eclipse.jface.action,  org.eclipse.ui.texteditor,  org.ec
+ lipse.core.runtime,  org.eclipse.ui,  org.eclipse.core.resources,  or
+ g.eclipse.ui.part",eu.kalafatic.gemini.core.exceptions,eu.kalafatic.g
+ emini.core.factories;uses:="eu.kalafatic.gemini.core.lib.constants,or
+ g.eclipse.swt.widgets,org.eclipse.ui.forms.widgets",eu.kalafatic.gemi
+ ni.core.hack; uses:="org.eclipse.jface.wizard,  eu.kalafatic.gemini.c
+ ore.lib.constants,  org.eclipse.jface.action,  org.eclipse.core.runti
+ me,  org.eclipse.swt.graphics,  org.eclipse.swt.widgets,  org.eclipse
+ .ui.splash,  org.eclipse.jface.dialogs",eu.kalafatic.gemini.core.hand
+ lers;uses:="eu.kalafatic.gemini.core.lib.constants,org.eclipse.core.c
+ ommands",eu.kalafatic.gemini.core.interfaces;uses:="eu.kalafatic.gemi
+ ni.core.dialogs",eu.kalafatic.gemini.core.intro; uses:="org.eclipse.u
+ i.intro,  org.eclipse.ui,  org.eclipse.swt.graphics,  org.eclipse.swt
+ .widgets",eu.kalafatic.gemini.core.lib,eu.kalafatic.gemini.core.lib.c
+ onstants; uses:="org.eclipse.jface.resource,  org.eclipse.osgi.framew
+ ork.internal.core,  org.eclipse.osgi.baseadaptor.bundlefile,  org.osg
+ i.service.prefs,  org.eclipse.ui,  org.eclipse.swt.graphics,  org.ecl
+ ipse.osgi.baseadaptor",eu.kalafatic.gemini.core.listeners; uses:="org
+ .eclipse.ui,  org.eclipse.swt.events,  org.eclipse.swt.graphics,  org
+ .eclipse.swt.widgets",eu.kalafatic.gemini.core.models,eu.kalafatic.ge
+ mini.core.p2,eu.kalafatic.gemini.core.perspectives;uses:="org.eclipse
+ .ui",eu.kalafatic.gemini.core.preferences; uses:="eu.kalafatic.gemini
+ .core.lib.constants,  org.eclipse.jface.preference,  org.eclipse.ui, 
+  org.eclipse.swt.widgets",eu.kalafatic.gemini.core.providers; uses:="
+ eu.kalafatic.gemini.core.lib.constants,  org.eclipse.swt.dnd,  org.ec
+ lipse.swt.graphics,  org.eclipse.jface.viewers",eu.kalafatic.gemini.c
+ ore.schedulers,eu.kalafatic.gemini.core.threads,eu.kalafatic.gemini.c
+ ore.utils; uses:="org.eclipse.core.runtime,  org.osgi.service.prefs, 
+  org.eclipse.ui,  eu.kalafatic.gemini.core.models,  eu.kalafatic.gemi
+ ni.core.lib.constants,  org.eclipse.jface.action,  org.eclipse.emf.ec
+ ore,  eu.kalafatic.gemini.core.dialogs,  org.eclipse.core.resources, 
+  org.eclipse.swt.graphics,  eu.kalafatic.gemini.core.hack,  org.eclip
+ se.swt.widgets,  org.eclipse.jface.dialogs",eu.kalafatic.gemini.core.
+ views; uses:="eu.kalafatic.gemini.core.lib.constants,  org.eclipse.ui
+ ,  org.eclipse.jface.viewers,  org.eclipse.swt.graphics,  org.eclipse
+ .ui.part,  org.eclipse.swt.widgets,  org.eclipse.ui.splash",files,gem
+ ini,languages,languages.flags,launch,network,toolbar
+Bundle-ActivationPolicy: lazy
+Bundle-Name: %Bundle-Name.0
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Require-Bundle: org.eclipse.ui.editors;bundle-version="0.0.0";visibili
+ ty:=reexport,org.eclipse.core.net;bundle-version="0.0.0";visibility:=
+ reexport,org.eclipse.core.resources;bundle-version="0.0.0";visibility
+ :=reexport,org.eclipse.core.filesystem;bundle-version="0.0.0";visibil
+ ity:=reexport,org.eclipse.update.ui;bundle-version="0.0.0";visibility
+ :=reexport,org.eclipse.update.core;bundle-version="0.0.0";visibility:
+ =reexport,org.eclipse.help.ui;bundle-version="0.0.0";visibility:=reex
+ port,org.eclipse.emf.ecore.xmi;bundle-version="0.0.0";visibility:=ree
+ xport,org.eclipse.ui.ide;bundle-version="0.0.0";visibility:=reexport,
+ org.eclipse.ui.forms;bundle-version="0.0.0";visibility:=reexport,org.
+ eclipse.ui.intro;bundle-version="0.0.0";visibility:=reexport,org.ecli
+ pse.equinox.ds;bundle-version="0.0.0";visibility:=reexport,org.eclips
+ e.equinox.p2.ui;bundle-version="0.0.0";visibility:=reexport,org.eclip
+ se.equinox.p2.ui.sdk;bundle-version="0.0.0";visibility:=reexport,org.
+ eclipse.equinox.p2.ui.sdk.scheduler;bundle-version="0.0.0";visibility
+ :=reexport,org.eclipse.equinox.p2.updatechecker;bundle-version="0.0.0
+ ";visibility:=reexport,org.eclipse.equinox.p2.engine;bundle-version="
+ 0.0.0";visibility:=reexport,org.eclipse.equinox.p2.core;bundle-versio
+ n="0.0.0";visibility:=reexport,org.eclipse.equinox.p2.metadata;bundle
+ -version="0.0.0";visibility:=reexport,org.eclipse.equinox.p2.metadata
+ .repository;bundle-version="0.0.0";visibility:=reexport
+Bundle-Vendor: %Bundle-Vendor.0
+Eclipse-LazyStart: true
+Bundle-Version: 2.0.3.201111071014
+Bundle-ManifestVersion: 2
+Bundle-Activator: eu.kalafatic.gemini.core.Activator
+Bundle-SymbolicName: eu.kalafatic.gemini.core;singleton:=true
+
+

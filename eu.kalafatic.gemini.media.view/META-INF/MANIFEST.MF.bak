@@ -1,0 +1,19 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %Bundle-Name.0
+Bundle-SymbolicName: eu.kalafatic.gemini.media.view;singleton:=true
+Bundle-Version: 3.0.0.qualifier
+Bundle-Activator: eu.kalafatic.gemini.media.view.Activator
+Require-Bundle: eu.kalafatic.gemini.core;bundle-version="0.0.0";visibility:=reexport
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-Vendor: %Bundle-Vendor.0
+Bundle-Localization: plugin
+Bundle-NativeCode: lib/jmc.dll;osname=win32;processor=x86 
+Bundle-ClassPath: .,
+ lib/jmc.jar
+Export-Package: eu.kalafatic.gemini.media.view,
+ eu.kalafatic.gemini.media.view.perspectives,
+ eu.kalafatic.gemini.media.view.views
+Import-Package: eu.kalafatic.gemini.media.controller.lib
+

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/eu.kalafatic.gemini.bt.client.net.rc.model/src"
+    modelPluginID="eu.kalafatic.gemini.bt.client.net.rc.model" modelName="Rc" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="6.0" copyrightFields="false">
+  <foreignModel>rc.ecore</foreignModel>
+  <genPackages prefix="Rc" basePackage="eu.kalafatic.gemini.bt.client.net.rc.model"
+      disposableProviderFactory="true" ecorePackage="rc.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="rc.ecore#//ERCSessionState">
+      <genEnumLiterals ecoreEnumLiteral="rc.ecore#//ERCSessionState/NEW"/>
+      <genEnumLiterals ecoreEnumLiteral="rc.ecore#//ERCSessionState/LOGIN"/>
+      <genEnumLiterals ecoreEnumLiteral="rc.ecore#//ERCSessionState/LOGED"/>
+      <genEnumLiterals ecoreEnumLiteral="rc.ecore#//ERCSessionState/CERTIFIED"/>
+      <genEnumLiterals ecoreEnumLiteral="rc.ecore#//ERCSessionState/LOGOUT"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="rc.ecore#//RCProtocol"/>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="rc.ecore#//ERCCMD">
+      <genEnumLiterals ecoreEnumLiteral="rc.ecore#//ERCCMD/APP_RESTART"/>
+      <genEnumLiterals ecoreEnumLiteral="rc.ecore#//ERCCMD/RC_LOGOUT"/>
+      <genEnumLiterals ecoreEnumLiteral="rc.ecore#//ERCCMD/SEL_ALL"/>
+      <genEnumLiterals ecoreEnumLiteral="rc.ecore#//ERCCMD/SEL_UNF"/>
+      <genEnumLiterals ecoreEnumLiteral="rc.ecore#//ERCCMD/SEL_FIN"/>
+      <genEnumLiterals ecoreEnumLiteral="rc.ecore#//ERCCMD/T_START"/>
+      <genEnumLiterals ecoreEnumLiteral="rc.ecore#//ERCCMD/T_STOP"/>
+      <genEnumLiterals ecoreEnumLiteral="rc.ecore#//ERCCMD/T_ADD"/>
+    </genEnums>
+    <genClasses ecoreClass="rc.ecore#//RC">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rc.ecore#//RC/sessionMap"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rc.ecore#//RC/tree"/>
+    </genClasses>
+    <genClasses ecoreClass="rc.ecore#//RCSession">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rc.ecore#//RCSession/state"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rc.ecore#//RCSession/torrents"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rc.ecore#//RCSession/httpExchange"/>
+    </genClasses>
+    <genClasses ecoreClass="rc.ecore#//StringToSessionMapEntry">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rc.ecore#//StringToSessionMapEntry/key"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rc.ecore#//StringToSessionMapEntry/value"/>
+    </genClasses>
+    <genClasses ecoreClass="rc.ecore#//StringToFolderMapEntry">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rc.ecore#//StringToFolderMapEntry/key"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rc.ecore#//StringToFolderMapEntry/value"/>
+    </genClasses>
+    <genClasses ecoreClass="rc.ecore#//StringToPageMapEntry">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rc.ecore#//StringToPageMapEntry/key"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rc.ecore#//StringToPageMapEntry/value"/>
+    </genClasses>
+    <genClasses ecoreClass="rc.ecore#//Folder">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rc.ecore#//Folder/folders"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rc.ecore#//Folder/pages"/>
+    </genClasses>
+    <genClasses ecoreClass="rc.ecore#//Page">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rc.ecore#//Page/address"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference rc.ecore#//Page/parent"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

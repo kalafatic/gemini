@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %Bundle-Name
+Bundle-SymbolicName: eu.kalafatic.gemini.bt.client.model.nl1
+Bundle-Version: 3.0.0.qualifier
+Fragment-Host: eu.kalafatic.gemini.bt.client.model
+Bundle-Vendor: %Bundle-Vendor

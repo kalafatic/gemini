@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="tracker"
+    nsURI="http:///tracker.ecore" nsPrefix="tracker">
+  <eClassifiers xsi:type="ecore:EClass" name="TrackerModel">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="swarmMap" upperBound="-1"
+        eType="#//StringToSessionMapEntry" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="trackerID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="-GE2010-000000000000"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="defaultNumwant" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="30"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="defaultInterval" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="10"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TorrentSession" eSuperTypes="#//Session">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="torrentName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="complete" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="incomplete" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="torrentLen" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="downloaded" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="clientMap" upperBound="-1"
+        eType="#//StringToSessionMapEntry" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="torrentPath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ClientSession" eSuperTypes="#//Session">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="seed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lastConnection" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Session">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="address" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="channel" eType="#//Channel"
+        transient="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="requestMap" upperBound="-1"
+        eType="#//StringToStringMapEntry" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="communication" upperBound="-1"
+        eType="#//Communication" transient="true" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sessionState" eType="#//trackerConstants/EViewMessages"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="peerId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="note" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="infoHash" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="listenPort" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="torrent" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"
+        transient="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StringToSessionMapEntry" instanceClassName="java.util.Map$Entry">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//Session"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StringToStringMapEntry" instanceClassName="java.util.Map$Entry">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="Channel" instanceClassName="java.nio.channels.SocketChannel"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Communication">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="date" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="request" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="response" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eSubpackages name="trackerConstants" nsURI="http:///trackerConstants.ecore" nsPrefix="trackerConstants">
+    <eClassifiers xsi:type="ecore:EEnum" name="EViewMessages">
+      <eLiterals name="READY" value="10"/>
+      <eLiterals name="PAUSED" value="11"/>
+      <eLiterals name="STOPPED" value="12"/>
+      <eLiterals name="FINISHED" value="13" literal="FINISHED"/>
+      <eLiterals name="WAITING" value="14" literal="WAITING"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="ETrackerRequestProtocol">
+      <eLiterals name="ANNOUNCE" literal=""/>
+      <eLiterals name="INFO_HASH" value="1" literal="info_hash"/>
+      <eLiterals name="PEER_ID" value="2" literal="peer_id"/>
+      <eLiterals name="PORT" value="3" literal="port"/>
+      <eLiterals name="UPLOADED" value="4" literal="uploaded"/>
+      <eLiterals name="DOWNLOADED" value="5" literal="downloaded"/>
+      <eLiterals name="LEFT" value="6" literal="left"/>
+      <eLiterals name="COMPACT" value="7" literal="compact"/>
+      <eLiterals name="NO_PEER_ID" value="8" literal="no_peer_id"/>
+      <eLiterals name="IP" value="9" literal="ip"/>
+      <eLiterals name="NUMWANT" value="10" literal="numwant"/>
+      <eLiterals name="KEY" value="11" literal="key"/>
+      <eLiterals name="TRACKER_ID" value="12" literal="tracker_id"/>
+      <eLiterals name="EVENT" value="13" literal="event"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="ETrackerResponseProtocol">
+      <eLiterals name="FAILURE_REASON" literal="failure reason"/>
+      <eLiterals name="WARNING_MESSAGE" value="1" literal="warning message"/>
+      <eLiterals name="INTERVAL" value="2" literal="interval"/>
+      <eLiterals name="MIN_INTERVAL" value="3" literal="min interval"/>
+      <eLiterals name="TRACKER_ID" value="4" literal="tracker_id"/>
+      <eLiterals name="COMPLETE" value="5" literal="complete"/>
+      <eLiterals name="INCOMPLETE" value="6" literal="incomplete"/>
+      <eLiterals name="PEERS" value="7" literal="peers"/>
+      <eLiterals name="PEER_ID" value="8" literal="peer id"/>
+      <eLiterals name="IP" value="9" literal="ip"/>
+      <eLiterals name="PORT" value="10" literal="port"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="ETrackerResponseCode">
+      <eLiterals name="INVALID_REQUEST" value="100" literal="Invalid request type: client request was not a HTTP GET. "/>
+      <eLiterals name="MISSING_HASH" value="101" literal="Missing info_hash. "/>
+      <eLiterals name="MISSING_PEER_ID" value="102" literal="Missing peer_id. "/>
+      <eLiterals name="MISSING_PORT" value="103" literal="Missing port."/>
+      <eLiterals name="INVALID_HASH" value="150" literal="Invalid infohash: infohash is not 20 bytes long. "/>
+      <eLiterals name="INVALID_PEER_ID" value="151" literal="Invalid peerid: peerid is not 20 bytes long."/>
+      <eLiterals name="INVALID_NUMWANT" value="152" literal="Invalid numwant. Client requested more peers than allowed by tracker. "/>
+      <eLiterals name="HASH_NOT_FOUND" value="200" literal="info_hash not found in the database. Sent only by trackers that do not automatically include new hashes into the database. "/>
+      <eLiterals name="EVENTLESS_REQUEST" value="500" literal="Client sent an eventless request before the specified time. "/>
+      <eLiterals name="GENERIC_ERROR" value="900" literal="Generic error."/>
+    </eClassifiers>
+  </eSubpackages>
+</ecore:EPackage>

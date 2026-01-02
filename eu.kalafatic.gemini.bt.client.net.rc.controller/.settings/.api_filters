@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<component id="eu.kalafatic.gemini.bt.client.net.rc.controller" version="2">
+    <resource path="src/eu/kalafatic/gemini/bt/client/net/rc/controller/model/RCModelManager.java" type="eu.kalafatic.gemini.bt.client.net.rc.controller.model.RCModelManager">
+        <filter id="627060751">
+            <message_arguments>
+                <message_argument value="BundleFile"/>
+                <message_argument value="RCModelManager"/>
+                <message_argument value="BUNDLE_FILE"/>
+            </message_arguments>
+        </filter>
+    </resource>
+</component>

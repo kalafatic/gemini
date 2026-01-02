@@ -1,0 +1,10 @@
+org.eclipse.ui/SHOW_PROGRESS_ON_STARTUP = true
+org.eclipse.ui/SHOW_TRADITIONAL_STYLE_TABS=false
+org.eclipse.ui/DOCK_PERSPECTIVE_BAR=right
+org.eclipse.ui/SHOW_MEMORY_MONITOR = true 
+
+org.eclipse.update.ui/discoverySitesEnabled=true
+org.eclipse.update.scheduler/enabled = false
+org.eclipse.update.scheduler/schedule = on-startup
+org.eclipse.update.scheduler/download = false
+org.eclipse.update.core/org.eclipse.update.core.checkSignature = false 

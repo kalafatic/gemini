@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="eu.kalafatic.gemini.stat.feature"
+      label="Gemini - Statistics Feature"
+      version="3.0.0.qualifier"
+      provider-name="Petr Kalafatic">
+
+   <description url="http://www.example.com/description">
+      [Enter Feature Description here.]
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+      [Enter Copyright Description here.]
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      [Enter License Description here.]
+   </license>
+
+   <url>
+      <update label="Gemini - Update Site" url="http://kalafatic.eu:6885/Web/Projects/Gemini/Update"/>
+   </url>
+
+   <requires>
+      <import plugin="org.swtchart" version="0.8.0" match="greaterOrEqual"/>
+      <import plugin="eu.kalafatic.gemini.stat.model" version="2.1.0" match="greaterOrEqual"/>
+      <import plugin="eu.kalafatic.gemini.core" version="2.1.0" match="greaterOrEqual"/>
+      <import plugin="eu.kalafatic.gemini.stat.controller" version="2.1.0" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="eu.kalafatic.gemini.stat.controller"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="eu.kalafatic.gemini.stat.model"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="eu.kalafatic.gemini.stat.view"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

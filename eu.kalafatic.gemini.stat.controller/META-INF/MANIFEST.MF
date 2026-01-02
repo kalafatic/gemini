@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %Bundle-Name
+Bundle-SymbolicName: eu.kalafatic.gemini.stat.controller
+Bundle-Version: 3.0.0.qualifier
+Bundle-Activator: eu.kalafatic.gemini.stat.controller.Activator
+Require-Bundle: eu.kalafatic.gemini.stat.model;bundle-version="2.1.0";visibility:=reexport
+Bundle-ActivationPolicy: lazy
+Export-Package: eu.kalafatic.gemini.stat.controller,
+ eu.kalafatic.gemini.stat.controller.main,
+ eu.kalafatic.gemini.stat.controller.model,
+ eu.kalafatic.gemini.stat.controller.providers
+Bundle-RequiredExecutionEnvironment: JavaSE-15

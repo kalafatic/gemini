@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %Bundle-Name
+Bundle-SymbolicName: eu.kalafatic.gemini.stat.view;singleton:=true
+Bundle-Version: 3.0.0.qualifier
+Bundle-Activator: eu.kalafatic.gemini.stat.view.Activator
+Require-Bundle: eu.kalafatic.gemini.stat.controller;bundle-version="2.1.0",
+ org.swtchart;bundle-version="0.8.0"
+Bundle-ActivationPolicy: lazy
+Export-Package: eu.kalafatic.gemini.stat.view,
+ eu.kalafatic.gemini.stat.view.perspectives,
+ eu.kalafatic.gemini.stat.view.views
+Bundle-RequiredExecutionEnvironment: JavaSE-15

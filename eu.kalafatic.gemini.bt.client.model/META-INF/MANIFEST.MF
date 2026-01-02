@@ -1,0 +1,23 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %Bundle-Name.0
+Bundle-SymbolicName: eu.kalafatic.gemini.bt.client.model;singleton:=true
+Bundle-Version: 3.0.0.qualifier
+Bundle-ClassPath: .
+Bundle-Vendor: %Bundle-Vendor.0
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-15
+Export-Package: 
+ eu.kalafatic.gemini.bt.client.model.torrents;uses:="org.eclipse.emf.ecore,org.eclipse.emf.common.util",
+ eu.kalafatic.gemini.bt.client.model.torrents.impl;
+  uses:="org.eclipse.emf.ecore,
+   org.eclipse.emf.common.util,
+   eu.kalafatic.gemini.bt.client.model.torrents,
+   org.eclipse.emf.common.notify,
+   org.eclipse.emf.ecore.impl",
+ eu.kalafatic.gemini.bt.client.model.torrents.util;
+  uses:="org.eclipse.emf.ecore,
+   org.eclipse.emf.common.notify.impl,
+   eu.kalafatic.gemini.bt.client.model.torrents,
+   org.eclipse.emf.common.notify"
+Require-Bundle: org.eclipse.emf.ecore;bundle-version="0.0.0";visibility:=reexport

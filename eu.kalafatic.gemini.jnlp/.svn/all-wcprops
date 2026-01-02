@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/Gemini/!svn/ver/5/trunk/eu.kalafatic.gemini.jnlp
+END
+build.properties
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/Gemini/!svn/ver/6/trunk/eu.kalafatic.gemini.jnlp/build.properties
+END
+.project
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/Gemini/!svn/ver/6/trunk/eu.kalafatic.gemini.jnlp/.project
+END
+plugin_customization.ini
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/Gemini/!svn/ver/6/trunk/eu.kalafatic.gemini.jnlp/plugin_customization.ini
+END
+feature.xml
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/Gemini/!svn/ver/6/trunk/eu.kalafatic.gemini.jnlp/feature.xml
+END

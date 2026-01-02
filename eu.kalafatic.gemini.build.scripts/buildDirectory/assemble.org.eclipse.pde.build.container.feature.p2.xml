@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Publish p2 metadata" default="main">
+	<property name="launcherName" value="eclipse"/>
+	<property name="launcherProvider" value="org.eclipse.equinox.executable"/>
+	<property name="p2.build.repo" value="file:${buildDirectory}/buildRepo"/>
+	<property name="assemblyTempDir" value="${buildDirectory}/tmp"/>
+	<property name="jarProcessor.sign" value="false"/>
+	<available property="customAssembly" file="${builder}/customAssembly.xml" value="${builder}/customAssembly.xml"/>
+	<property name="p2.product.qualifier" value="201111071014"/>
+	<property name="p2.mirror.raw" value="false"/>
+	<property name="p2.mirror.slicing.filter" value=""/>
+	<property name="p2.mirror.slicing.followOnlyFilteredRequirements" value="false"/>
+	<property name="p2.mirror.slicing.followStrict" value="false"/>
+	<property name="p2.mirror.slicing.includeFeatures" value="true"/>
+	<property name="p2.mirror.slicing.includeNonGreedy" value="false"/>
+	<property name="p2.mirror.slicing.includeOptional" value="true"/>
+	<property name="p2.mirror.slicing.latestVersionOnly" value="false"/>
+	<property name="p2.mirror.slicing.platformFilter" value=""/>
+
+	<macrodef name="customGather">
+		<attribute name="dir" />
+		<attribute name="propertyName" />
+		<attribute name="propertyValue" />
+		<attribute name="subFolder" />
+		<attribute name="projectName" />
+		<sequential>
+			<ant antfile="build.xml" dir="@{dir}" target="publish.bin.parts">
+				<property name="@{propertyName}" value="@{propertyValue}"/>
+			</ant>
+			<antcall target="customAssembly">
+				<param name="target.folder" value="@{propertyValue}@{subFolder}"/>
+				<param name="projectLocation" value="${basedir}/@{dir}"/>
+				<param name="@{propertyName}" value="@{propertyValue}"/>
+				<param name="customTarget" value="gather.bin.parts"/>
+				<param name="projectName" value="@{projectName}"/>
+			</antcall>
+		</sequential>
+	</macrodef>
+
+	<target name="main">
+		<antcall target="gather.bin.parts"/>
+		<antcall target="customAssembly">
+			<param name="customTarget" value="post.gather.bin.parts"/>
+		</antcall>
+
+
+		<antcall target="generate.p2.metadata"/>
+	</target>
+
+	<target name="gather.bin.parts">
+		<customGather dir="..\..\eu.kalafatic.gemini.core" projectName="eu.kalafatic.gemini.core_2.0.3.201111071014" propertyName="destination.temp.folder" propertyValue="${eclipse.plugins}" subFolder="" />
+		<customGather dir="..\..\eu.kalafatic.gemini.core.help" projectName="eu.kalafatic.gemini.core.help_2.0.3.201111071014" propertyName="destination.temp.folder" propertyValue="${eclipse.plugins}" subFolder="" />
+		<customGather dir="features\core.root.feature\" projectName="core.root.feature_1.0.0.201111071014" propertyName="feature.base" propertyValue="${eclipse.base}" subFolder="/features" />
+		<customGather dir="..\..\eu.kalafatic.gemini.core.feature\" projectName="eu.kalafatic.gemini.core.feature_2.0.3.201111071014" propertyName="feature.base" propertyValue="${eclipse.base}" subFolder="/features" />
+		<customGather dir="..\..\elipse.plugins.feature\" projectName="elipse.plugins.feature_2.0.3.201111071014" propertyName="feature.base" propertyValue="${eclipse.base}" subFolder="/features" />
+		<customGather dir="..\..\eu.kalafatic.gemini.core.module\" projectName="eu.kalafatic.gemini.core.module_2.0.3.201111071014" propertyName="feature.base" propertyValue="${eclipse.base}" subFolder="/features" />
+		<customGather dir="..\..\..\..\..\Eclipse-Indigo-3.7.1\deltapack\eclipse\features\org.eclipse.equinox.executable_3.5.0.v20110530-7P7NFUFFLWUl76mart\" projectName="org.eclipse.equinox.executable_3.5.0.v20110530-7P7NFUFFLWUl76mart" propertyName="feature.base" propertyValue="${eclipse.base}" subFolder="/features" />
+		<eclipse.publish.featuresAndBundles repository="${p2.build.repo}" site="${p2.category.site}" category="${p2.category.definition}" siteQualifier="${p2.category.prefix}" categoryVersion="${p2.category.version}">
+			<features dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\features\" includes="org.eclipse.rcp_3.7.1.r37x_v20110729-9DB5FmNFnFLSFCtLxnRfMqt15A4A"			/>
+			<features dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\features\" includes="org.eclipse.equinox.p2.core.feature_1.0.1.R37x_v20110906-8290FZ3FUqIcLqkVkEaTdn_14C7G"			/>
+			<features dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\features\" includes="org.eclipse.equinox.p2.rcp.feature_1.0.1.R37x_v20110906-782EpBqNKGUkZQpuT8hAlWlFbUeo"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.ui.intro.universal_3.2.500.v20110510"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.osgi.services_3.3.0.v20110513.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.jface.databinding_1.5.0.I20100907-0800.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.ecf_3.1.300.v20110531-2218.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.swt.win32.win32.x86_3.7.1.v3738a.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.emf.ecore.xmi_2.7.0.v20110520-1406.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.ecf.provider.filetransfer.ssl_1.0.0.v20110531-2218.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.apache.lucene.analysis_2.9.1.v201101211721.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.emf.common_2.7.0.v20110912-0920.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.ui_3.7.0.I20110602-0100.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.ecf.ssl_1.0.100.v20110531-2218.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.help.base_3.6.1.v201109091335.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.ui.forms_3.5.100.v20110425.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.ecf.identity_3.1.100.v20110531-2218.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.jface.text_3.7.1.r371_v20110825-0800.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.help_3.5.100.v20110426.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\deltapack\eclipse\plugins" includes="org.eclipse.ui.win32_3.2.200.I20100509-0800.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.apache.commons.logging_1.1.1.v201101211721.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.core.contenttype_3.4.100.v20110423-0524.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="com.ibm.icu_4.4.2.v20110208.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.ui.intro_3.4.100.v20110425.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.ui.workbench_3.7.0.I20110519-0100.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.emf.ecore_2.7.0.v20110912-0920.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.text_3.5.101.r371_v20110810-0800.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.core.expressions_3.4.300.v20110228.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.core.filebuffers_3.5.200.v20110505-0800.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.emf_2.6.0.v20110913-1156.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.apache.lucene_2.9.1.v201101211721.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.core.net.win32.x86_1.0.100.I20110331-0827.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.ui.workbench.texteditor_3.7.0.v20110505-0800.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.ui.editors_3.7.0.v20110517-0800.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.core.filesystem.win32.x86_1.1.300.v20110423-0524.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.core.jobs_3.5.100.v20110404.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.core.commands_3.6.0.I20110111-0800.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.help.ui_3.5.101.r37_20110819.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.ecf.provider.filetransfer_3.2.0.v20110531-2218.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.osgi_3.7.1.R37x_v20110808-1106.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.jface_3.7.0.I20110522-1430.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.ecf.filetransfer_5.0.0.v20110531-2218.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.core.databinding_1.4.0.I20110111-0800.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.apache.ant_1.8.2.v20110505-1300"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.zest.core_1.3.0.v20110221-2050.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.zest.layouts_1.1.0.v20110425-2050.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.draw2d_3.7.1.v20110830-1143.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.ui.ide_3.7.0.v20110809-1737.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.ui.views_3.6.0.I20110412-0800.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.apache.lucene.core_2.9.1.v201101211721.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.update.core_3.2.500.v20110330.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.update.ui_3.2.300.v20100512.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.core.filesystem_1.3.100.v20110423-0524.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.core.net_1.2.100.I20110511-0800.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.core.resources_3.7.100.v20110510-0712.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.compare.core_3.5.200.I20110208-0800.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.ecf.provider.filetransfer.httpclient_4.0.0.v20110531-2218.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.equinox.p2.core_2.1.0.v20110502-1955.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.equinox.p2.metadata_2.1.0.v20110510.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.apache.commons.codec_1.3.0.v201101211617.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.apache.commons.httpclient_3.1.0.v201012070820.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="ch.qos.logback.classic_0.9.19.v20100519-1505.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="ch.qos.logback.core_0.9.19.v20100419-1216.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="ch.qos.logback.slf4j_0.9.19.v20100519-1910.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="javax.servlet.jsp_2.0.0.v201101211617.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.apache.commons.el_1.0.0.v201101211617.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.apache.jasper_5.5.17.v201101211617.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.equinox.jsp.jasper_1.0.300.v20110502.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.equinox.jsp.jasper.registry_1.0.200.v20100503.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.slf4j.api_1.5.11.v20100519-1910.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.team.cvs.ssh2_3.2.300.I20110511-0800.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="javax.servlet_2.5.0.v201103041518.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.jsch.core_1.1.300.I20110514-0800.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="com.jcraft.jsch_0.1.41.v201101211617.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.team.core_3.6.0.I20110525-0800.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.team.cvs.core_3.3.400.I20110510-0800.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.equinox.p2.engine_2.1.0.v20110511.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.equinox.p2.metadata.repository_1.2.0.v20110511-1359.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.equinox.p2.ui_2.1.0.v20110601.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.equinox.p2.ui.sdk_1.0.200.v20110502-1955.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.equinox.p2.ui.sdk.scheduler_1.0.100.v20110502-1955.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.equinox.p2.updatechecker_1.1.200.v20110502-1955.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.equinox.http.registry_1.1.100.v20110502.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.core.databinding.observable_1.4.0.I20110222-0800.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.core.databinding.property_1.4.0.I20110222-0800.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.core.databinding.beans_1.2.100.I20100824-0800.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.core.runtime_3.7.0.v20110110.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.core.runtime.compatibility.auth_3.2.200.v20110110.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.swt_3.7.1.v3738a.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.update.configurator_3.3.100.v20100512.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.equinox.simpleconfigurator_1.0.200.v20110502-1955.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.rcp_3.7.0.v201109091335.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.equinox.app_1.3.100.v20110321.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.equinox.common_3.6.0.v20110523.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.equinox.ds_1.3.1.R37x_v20110701.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.equinox.util_1.0.300.v20110502.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.equinox.preferences_3.4.1.R37x_v20110725.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.equinox.registry_3.5.101.R37x_v20110810-1611.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.equinox.launcher_1.2.0.v20110502.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.equinox.launcher.win32.win32.x86_1.1.100.v20110502"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.equinox.p2.artifact.repository_1.1.101.R37x_v20110714.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.equinox.p2.console_1.0.300.v20110502-1955.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.equinox.p2.director_2.1.0.v20110504-1715.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.equinox.p2.garbagecollector_1.0.200.v20110510.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.equinox.p2.repository_2.1.0.v20110601.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.equinox.p2.touchpoint.eclipse_2.1.1.R37x_v20110815-0935.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.equinox.p2.touchpoint.natives_1.0.300.v20110502-1955.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.equinox.simpleconfigurator.manipulator_2.0.0.v20110502-1955.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.sat4j.core_2.3.0.v20110329.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.sat4j.pb_2.3.0.v20110329.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.ecf.provider.filetransfer.httpclient.ssl_1.0.0.v20110531-2218.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.apache.commons.logging_1.0.4.v201101211617.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.equinox.frameworkadmin_2.0.0.v20110502-1955.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.equinox.frameworkadmin.equinox_1.0.300.v20110506.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.equinox.security_1.1.1.R37x_v20110822-1018.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.equinox.p2.jarprocessor_1.0.200.v20110502-1955.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.equinox.p2.ql_2.0.100.v20110510.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.equinox.p2.transport.ecf_1.0.0.v20110510.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.equinox.p2.operations_2.1.0.v20110511-1821.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.equinox.security.win32.x86_1.0.200.v20100503.jar"			/>
+			<bundles dir="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Eclipse-Indigo-3.7.1\plugins" includes="org.eclipse.equinox.security.ui_1.1.0.v20101004.jar"			/>
+			<contextRepository metadata="true" location="file:/C:/Program Files/Adobe/Reader 9.0/Reader/AIR/Eclipse-Indigo-3.7.1/configuration/../p2/org.eclipse.equinox.p2.engine/profileRegistry/epp.package.modeling.profile/"			/>
+			<contextRepository metadata="true" location="file:/C:/Program Files/Adobe/Reader 9.0/Reader/AIR/Eclipse-Indigo-3.7.1/configuration/org.eclipse.osgi/bundles/479/data/listener_1925729951/"			/>
+		</eclipse.publish.featuresAndBundles>
+	</target>
+
+	<target name="customAssembly" if="customAssembly">
+		<ant antfile="${customAssembly}" target="${customTarget}" inheritAll="true"/>
+	</target>
+
+	<target name="sign.p2.repository">
+	</target>
+
+	<target name="generate.p2.metadata">
+		<property name="p2.flavor" value="tooling"/>
+		<eclipse.brand.p2.artifacts  launcherName="${launcherName}" config="win32.win32.x86" iconsList="${launcherIcons}" launcherProvider="${launcherProvider}" productId="core" productVersion="1.0.0.${p2.product.qualifier}" repository="${p2.build.repo}" tempDirectory="${assemblyTempDir}"		/>
+		<delete dir="${assemblyTempDir}/p2.branding"/>
+
+		<copy file="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.core\products\core.product" tofile="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.build.scripts\buildDirectory\features\org.eclipse.pde.build.container.feature\product\core.product" overwrite="true"/>
+		<replace  file="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.build.scripts\buildDirectory\features\org.eclipse.pde.build.container.feature\product\p2.inf" token="@FLAVOR@" value="${p2.flavor}"		/>
+		<eclipse.idReplacer productFilePath="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.build.scripts\buildDirectory\features\org.eclipse.pde.build.container.feature\product\core.product"
+		                    selfVersion="1.0.0.${p2.product.qualifier}" 
+		                    featureIds="eu.kalafatic.gemini.core.module:2.0.3,2.0.3.201111071014,"/>
+		<p2.publish.product flavor="${p2.flavor}" repository="${p2.build.repo}" productFile="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.build.scripts\buildDirectory\features\org.eclipse.pde.build.container.feature\product\core.product"		>
+			<contextRepository location="file:/C:/Program Files/Adobe/Reader 9.0/Reader/AIR/Eclipse-Indigo-3.7.1/configuration/../p2/org.eclipse.equinox.p2.engine/profileRegistry/epp.package.modeling.profile/" metadata="true"		/>
+			<contextRepository location="file:/C:/Program Files/Adobe/Reader 9.0/Reader/AIR/Eclipse-Indigo-3.7.1/configuration/org.eclipse.osgi/bundles/479/data/listener_1925729951/" metadata="true"		/>
+			<contextRepository location="file:/C:/Program Files/Adobe/Reader 9.0/Reader/AIR/Eclipse-Indigo-3.7.1/" artifact="true"		/>
+			<contextRepository location="file:/C:/Program Files/Adobe/Reader 9.0/Reader/AIR/Eclipse-Indigo-3.7.1/configuration/org.eclipse.osgi/bundles/479/data/listener_1925729951/" artifact="true"		/>
+			<contextRepository location="file:/C:/Program Files/Adobe/Reader 9.0/Reader/AIR/Eclipse-Indigo-3.7.1/p2/org.eclipse.equinox.p2.core/cache/" artifact="true"		/>
+			<config os="win32" ws="win32" arch="x86"		/>
+			<advice kind="featureVersions" file="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.build.scripts/buildDirectory/finalFeaturesVersions.properties"		/>
+			<advice kind="pluginVersions" file="C:\Program Files\Adobe\Reader 9.0\Reader\AIR\Projects\GEMINI\DP-071111\eu.kalafatic.gemini.build.scripts/buildDirectory/finalPluginsVersions.properties"		/>
+		</p2.publish.product>
+
+		<p2.mirror raw="${p2.mirror.raw}">
+			<slicingOptions includeNonGreedy="${p2.mirror.slicing.includeNonGreedy}" filter="${p2.mirror.slicing.filter}" followOnlyFilteredRequirements="${p2.mirror.slicing.followOnlyFilteredRequirements}" followStrict="${p2.mirror.slicing.followStrict}" includeFeatures="${p2.mirror.slicing.includeFeatures}" includeOptional="${p2.mirror.slicing.includeOptional}" latestVersionOnly="${p2.mirror.slicing.latestVersionOnly}" platformFilter="${p2.mirror.slicing.platformFilter}"		/>
+			<source location="${p2.build.repo}"		/>
+			<source location="file:/C:/Program Files/Adobe/Reader 9.0/Reader/AIR/Eclipse-Indigo-3.7.1/configuration/../p2/org.eclipse.equinox.p2.engine/profileRegistry/epp.package.modeling.profile/" optional="true" kind="metadata"		/>
+			<source location="file:/C:/Program Files/Adobe/Reader 9.0/Reader/AIR/Eclipse-Indigo-3.7.1/configuration/org.eclipse.osgi/bundles/479/data/listener_1925729951/" optional="true" kind="metadata"		/>
+			<source location="file:/C:/Program Files/Adobe/Reader 9.0/Reader/AIR/Eclipse-Indigo-3.7.1/" optional="true" kind="artifact"		/>
+			<source location="file:/C:/Program Files/Adobe/Reader 9.0/Reader/AIR/Eclipse-Indigo-3.7.1/configuration/org.eclipse.osgi/bundles/479/data/listener_1925729951/" optional="true" kind="artifact"		/>
+			<source location="file:/C:/Program Files/Adobe/Reader 9.0/Reader/AIR/Eclipse-Indigo-3.7.1/p2/org.eclipse.equinox.p2.core/cache/" optional="true" kind="artifact"		/>
+			<destination  location="${p2.build.repo}" kind="metadata"		/>
+	<destination  location="${p2.build.repo}" kind="artifact"		/>
+			<iu id="core" version="1.0.0.${p2.product.qualifier}"		/>
+		</p2.mirror>
+	</target>
+</project>

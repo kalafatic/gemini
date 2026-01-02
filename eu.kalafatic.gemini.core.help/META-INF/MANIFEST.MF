@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %Bundle-Name.0
+Bundle-SymbolicName: eu.kalafatic.gemini.core.help;singleton:=true
+Bundle-Version: 3.0.0.qualifier
+Bundle-Activator: eu.kalafatic.gemini.core.help.Activator
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-15
+Export-Package: eu.kalafatic.gemini.core.help;uses:="org.eclipse.jface.resource,org.eclipse.ui.plugin,org.osgi.framework"
+Bundle-Localization: plugin
+Bundle-Vendor: %Bundle-Vendor.0
+Require-Bundle: org.eclipse.help.ui;bundle-version="0.0.0";visibility:=reexport
