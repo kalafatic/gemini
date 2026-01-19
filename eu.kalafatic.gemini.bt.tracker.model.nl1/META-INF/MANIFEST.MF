@@ -2,6 +2,6 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %Bundle-Name
 Bundle-SymbolicName: eu.kalafatic.gemini.bt.tracker.model.nl1
-Bundle-Version: 3.0.0.qualifier
+Bundle-Version: 2.6.1.qualifier
 Fragment-Host: eu.kalafatic.gemini.bt.tracker.model
 Bundle-Vendor: %Bundle-Vendor
