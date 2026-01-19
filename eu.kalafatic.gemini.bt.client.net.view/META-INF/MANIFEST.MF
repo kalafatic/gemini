@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %Bundle-Name.0
 Bundle-SymbolicName: eu.kalafatic.gemini.bt.client.net.view;singleton:=true
-Bundle-Version: 3.0.0.qualifier
+Bundle-Version: 2.6.1.qualifier
 Bundle-Activator: eu.kalafatic.gemini.bt.client.net.view.Activator
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-15

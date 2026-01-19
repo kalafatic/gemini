@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %Bundle-Name.0
 Bundle-SymbolicName: eu.kalafatic.gemini.bt.tracker.controller;singleton:=true
-Bundle-Version: 3.0.0.qualifier
+Bundle-Version: 2.6.1.qualifier
 Bundle-Activator: eu.kalafatic.gemini.bt.tracker.controller.Activator
 Require-Bundle: eu.kalafatic.gemini.bt.tracker.model;bundle-version="0.0.0";visibility:=reexport
 Bundle-ActivationPolicy: lazy
